@@ -5,11 +5,11 @@
 <hr>
 
 <h1>The problem</h1>
-<p>You are creating Folder, JSX file, and CSS or SCSS module file.</p>
-<p>Regardless the index.js and logic file.</p>
+<p>You are creating Folder, JSX file, and CSS or SCSS module files every component again and again.</p>
+<p>Not to mention, index.js and logic files.</p>
 
 <h1>The solution</h1>
-<p>Use this CLI.</p>
+<p>Use this CLI and create all of them in one command.</p>
 
 <hr>
 
@@ -17,11 +17,11 @@
 <p>SOON</p>
 
 <h1>How to use?</h1>
-<p>You can use this CLI trough npx or trough globall installation, or trough local installation.</p>
+<p>You can use this CLI trough npx or with global, or local installation. install instructions:</p>
 <ul>
-<li>npx crxo - npx</li>
-<li>npm i -g crxo - Global</li>
-<li>npm i or yarn add crxo - Local</li>
+<li>npx: npx crxo</li>
+<li>global: npm i -g crxo</li>
+<li>local: npm i crxo</li>
 </ul>
 
 <hr>
@@ -31,4 +31,4 @@
 https://www.npmjs.com/package/crxo
 
 <h1>Author</h1>
-<p>Itzikgabay</p>
+<p><a href="https://github.com/ItzikGabay">Itzikgabay</a></p>
