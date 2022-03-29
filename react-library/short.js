@@ -2,8 +2,7 @@
  * Short JSX template.
  */
 const shortJsx = (componentName, componentNameUppercased) => {
-  return `import React from "react";
-import stylesheet from "./${componentName}.module.css";
+  return `import stylesheet from "./${componentName}.module.css";
 
 const ${componentNameUppercased} = () => {
   return (
