@@ -3,12 +3,12 @@
  */
 const shortJsx = (componentName, componentNameUppercased) => {
   return `import React from "react";
-import styles from "./${componentName}.module.css";
+import stylesheet from "./${componentName}.module.css";
 
 const ${componentNameUppercased} = () => {
   return (
-    <div className={styles["${componentName}-container"]}>
-        <div className={styles["${componentName}-main"]}>
+    <div className={stylesheet.${componentName}__container}>
+        <div className={stylesheet.${componentName}__main}>
         </div>
     </div>
   )
@@ -21,7 +21,7 @@ export default ${componentNameUppercased}`;
  * Short CSS template.
  */
 const shortCss = (componentName) => {
-  return `.${componentName}-container {
+  return `.${componentName}__container {
     font-size: 200px;
 }`;
 };
