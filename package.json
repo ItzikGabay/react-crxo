@@ -1,6 +1,6 @@
 {
   "name": "crxo",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Helping you creating new react component trough interactive CLI.",
   "main": "lib/app.js",
   "type": "module",
