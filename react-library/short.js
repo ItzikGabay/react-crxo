@@ -8,12 +8,13 @@ const ${componentNameUppercased} = () => {
   return (
     <div className={stylesheet.${componentName}__container}>
         <div className={stylesheet.${componentName}__main}>
+          Component created successfully.
         </div>
     </div>
   )
 }
 
-export default ${componentNameUppercased}`;
+export default ${componentNameUppercased};`;
 };
 
 /**
