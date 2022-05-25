@@ -23,5 +23,7 @@
     "url": "https://github.com/ItzikGabay/react-create-component-cli.git"
   },
   "private": false,
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint": "^8.16.0"
+  }
 }
