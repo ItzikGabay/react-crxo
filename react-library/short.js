@@ -1,27 +1,27 @@
 /**
  * Short JSX template.
  */
-const shortJsx = (componentName, componentNameUppercased) => {
-  return `import stylesheet from "./${componentName}.module.css";
+const shortJsx = (name, uppercased) => {
+  return `import styles from "./${name}.module.css";
 
-const ${componentNameUppercased} = () => {
+const ${uppercased} = () => {
   return (
-    <div className={stylesheet.${componentName}__container}>
-        <div className={stylesheet.${componentName}__main}>
-          Component created successfully.
+    <div className={styles.${name}__container}>
+        <div className={styles.${name}__main}>
+          <p className={styles.${name}}__title>Component created successfully.<p>
         </div>
     </div>
   )
 }
 
-export default ${componentNameUppercased};`;
+export default ${uppercased};`;
 };
 
 /**
  * Short CSS template.
  */
-const shortCss = (componentName) => {
-  return `.${componentName}__container {
+const shortCss = (name) => {
+  return `.${name}__container {
     font-size: 200px;
 }`;
 };
