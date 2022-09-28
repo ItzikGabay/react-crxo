@@ -20,7 +20,7 @@ export default ${uppercased};`;
 /**
  * Short CSS template.
  */
-const shortCss = (name) => {
+const shortCss = name => {
   return `.${name}__container {
     font-size: 200px;
 }`;
