@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^8.3.0",
-    "inquirer": "^8.2.0",
+    "inquirer": "^8.2.0"
   },
   "repository": {
     "url": "https://github.com/ItzikGabay/react-create-component-cli.git"
