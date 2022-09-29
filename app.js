@@ -1,13 +1,14 @@
 #! /usr/bin/env node
 
-import utils, {
+import { getComponentConfiguration } from './lib/inquirer.js';
+import {
   getProcessArguments,
   validateArguments,
   createFiles,
-} from './utils/index.js';
-import language from './utils/language.js';
-import appConfig from './config.js';
-import { getComponentConfiguration } from './inquirer.js';
+} from './lib/utils/index.js';
+
+import language from './lib/language.js';
+import appConfig from './lib/config.js';
 
 const init = () => {
   const output = getProcessArguments();
