@@ -1,4 +1,4 @@
-export const shortJsx = (name, uppercased, cssType) => {
+export const shortJsx = (name, uppercased, cssType, templateType) => {
   return `import styles from "./${name}.${
     cssType === 'css' ? 'module.css' : 'module.scss'
   }";

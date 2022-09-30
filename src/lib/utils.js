@@ -1,8 +1,8 @@
 import path from 'path';
-import { shortJsx, shortCss } from '../../react-library/short.js';
+import { shortJsx, shortCss } from '../react-library/short.js';
 import fs from 'fs';
-import language from '../language.js';
-import appConfig from '../config.js';
+import language from './language.js';
+import appConfig from './config.js';
 
 function upperFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -61,7 +61,12 @@ function extractData(componentName, userInputPath = '') {
   };
 }
 
-export function createFiles(name, filesToCreate, filesPath = '') {
+export function createFiles(
+  name,
+  filesToCreate,
+  componentTemplate,
+  filesPath = '',
+) {
   const {
     folderPath,
     indexFilePath,
@@ -89,6 +94,7 @@ export function createFiles(name, filesToCreate, filesPath = '') {
             componentNameLowercased,
             componentNameUppercased,
             filesToCreate.includes('scss') ? 'scss' : 'css',
+            componentTemplate,
           ),
         );
         break;

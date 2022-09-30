@@ -6,7 +6,7 @@ import {
   validateArguments,
   createFiles,
   getApplicationModes,
-} from './lib/utils/index.js';
+} from './lib/utils.js';
 
 import language from './lib/language.js';
 import appConfig from './lib/config.js';
@@ -38,13 +38,14 @@ const init = async () => {
       }
     });
 
-    return createFiles(name, outputFilesList, path);
+    return createFiles(name, outputFilesList, 'lite', path);
   }
 
   // Silent mode
   try {
-    const { inputComponentName, generateFileTypes } = await componentPrompt();
-    createFiles(inputComponentName, generateFileTypes);
+    const { inputComponentName, generateFileTypes, componentTemplate } =
+      await componentPrompt();
+    createFiles(inputComponentName, generateFileTypes, componentTemplate);
   } catch (error) {
     if (error.isTtyError) {
       throw new Error(language.ERROR_RENDERING_ERR);
