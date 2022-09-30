@@ -22,7 +22,7 @@ const init = () => {
 
   const isInteractiveMode = mode === '--interactive' || mode === '--i';
   const isSilentMode = mode === 'create' || mode === '-c';
-  const outputFilesList = appConfig.interactive.defaultOptions;
+  const outputFilesList = [...appConfig.interactive.defaultOptions];
 
   if (isSilentMode && processArguments && !isInteractiveMode) {
     if (mode !== '-c' && mode !== 'create') {
