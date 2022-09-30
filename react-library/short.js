@@ -1,7 +1,4 @@
-/**
- * Short JSX template.
- */
-const shortJsx = (name, uppercased, cssType) => {
+export const shortJsx = (name, uppercased, cssType) => {
   return `import styles from "./${name}.${
     cssType === 'css' ? 'module.css' : 'module.scss'
   }";
@@ -21,13 +18,8 @@ const ${uppercased} = () => {
 export default ${uppercased};`;
 };
 
-/**
- * Short CSS template.
- */
-const shortCss = name => {
-  return `.${name}__container {
+export const shortCss = (name, cssType) => {
+  return `.${cssType === 'css' ? name + '__' : ''}container {
     font-size: 200px;
 }`;
 };
-
-export { shortJsx, shortCss };
