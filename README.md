@@ -1,5 +1,4 @@
-<h2 align="center">"CRXO🧳"</h2>
-<h1 align="center">Create React Component CLI</h1>
+<h1 align="center">🧳 CRXO - Create React Component CLI</h1>
 
 <p align="center">Save huge amount of time by using CLI to create your react components.</p>
 <hr>
@@ -7,7 +6,7 @@
 <p>Most of the time I worked on personal projects or company projects, I encountered a lot of repetition about the way we're generating our new components.</p>
 <p>So as someone who doesn't like to waste time, I asked myself why not develop some basic CLI to help me with this process?</p>
 <p>And here we are now.
-With this CLI you can produce components exactly as you want, with support for all types of groups such as CSS, SCSS, JS, JSX, Index file, Folder, with ready templates all you have to do is start writing code.</p>
+With this CLI you can produce components exactly as you want, with support for all types of groups such as <code>CSS, SCSS, JS, JSX, Index file, Folder</code>, with ready templates all you have to do is start writing code.</p>
 
 <hr>
 
