@@ -5,16 +5,16 @@ import {
   validateInputValue,
 } from './utils/index.js';
 
-export const getComponentConfiguration = () => {
+export const componentPrompt = () => {
   return inquirer.prompt([
     {
-      name: 'userInputComponentName',
+      name: 'inputComponentName',
       message: 'What is the component name (e.g exampleComponent) 💼 :',
       validate: input => validateInputValue(input),
     },
     {
       type: 'checkbox',
-      name: 'filterToCreateSelection',
+      name: 'generateFileTypes',
       message: 'Which files to create?',
       choices: getDefaultFilesTypesOptions(),
     },

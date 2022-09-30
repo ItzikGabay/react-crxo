@@ -39,7 +39,9 @@ function extractData(componentName, userInputPath = '') {
   const componentNameUppercased = uppercasedString(componentName);
   const componentNameLowercased = underscoredString(componentName);
   const cleanUserInputPath = _cleanPath(userInputPath);
-  let folderPath = `${path.resolve(componentName)}/${cleanUserInputPath}`;
+  let folderPath = `${path.resolve(
+    componentNameUppercased,
+  )}/${cleanUserInputPath}`;
 
   if (folderPath[folderPath.length - 1] === '/' && userInputPath.length < 3) {
     folderPath = folderPath.slice(0, -1);
@@ -55,11 +57,11 @@ function extractData(componentName, userInputPath = '') {
     componentNameUppercased,
     componentNameLowercased,
     indexFilePath: `${folderPath}index.js`,
-    filePathWithoutExtension: `${folderPath}${componentName}`,
+    filePathWithoutExtension: `${folderPath}${componentNameUppercased}`,
   };
 }
 
-export function createFiles(name, filesPath, filesToCreate) {
+export function createFiles(name, filesToCreate, filesPath = '') {
   const {
     folderPath,
     indexFilePath,
@@ -154,4 +156,14 @@ export function getDefaultFilesTypesOptions() {
 
 export function validateInputValue(input) {
   return /^[a-zA-Z0-9-]*$/.test(input) && input.length > 1;
+}
+
+export function getApplicationModes(mode) {
+  const isInteractiveMode = mode === '--interactive' || mode === '--i';
+  const isSilentMode = mode === 'create' || mode === '-c';
+
+  return {
+    isInteractiveMode,
+    isSilentMode,
+  };
 }
