@@ -11,14 +11,14 @@ import language from './lib/language.js';
 import appConfig from './lib/config.js';
 
 const init = () => {
-  const output = getProcessArguments();
-  const isValidArguments = validateArguments(output);
+  const currentRunArguments = getProcessArguments();
+  const isValidArguments = validateArguments(currentRunArguments);
 
   if (!isValidArguments.isValid) {
     return console.log(isValidArguments.error);
   }
 
-  const { mode, path, name, processArguments } = output;
+  const { mode, path, name, processArguments } = currentRunArguments;
 
   const isInteractiveMode = mode === '--interactive' || mode === '--i';
   const isSilentMode = mode === 'create' || mode === '-c';
@@ -38,8 +38,8 @@ const init = () => {
     return createFiles(name, path, outputFilesList);
   } else {
     getComponentConfiguration()
-      .then(({ userInputComponentName, filesCreationSelect }) => {
-        createFiles(userInputComponentName, '', filesCreationSelect);
+      .then(({ userInputComponentName, filterToCreateSelection }) => {
+        createFiles(userInputComponentName, '', filterToCreateSelection);
       })
       .catch(error => {
         if (error.isTtyError) {

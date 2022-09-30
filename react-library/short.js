@@ -1,14 +1,18 @@
 /**
  * Short JSX template.
  */
-const shortJsx = (name, uppercased) => {
-  return `import styles from "./${name}.module.css";
+const shortJsx = (name, uppercased, cssType) => {
+  return `import styles from "./${name}.${
+    cssType === 'css' ? 'module.css' : 'module.scss'
+  }";
 
 const ${uppercased} = () => {
   return (
-    <div className={styles.${name}__container}>
-        <div className={styles.${name}__main}>
-          <p className={styles.${name}}__title>Component created successfully.<p>
+    <div className={styles.${cssType === 'css' ? name + '__' : ''}container}>
+        <div className={styles.${cssType === 'css' ? name + '__' : ''}main}>
+          <p className={styles.${
+            cssType === 'css' && name + '__'
+          }title}>Component created successfully.</p>
         </div>
     </div>
   )
