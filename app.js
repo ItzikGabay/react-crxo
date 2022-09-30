@@ -12,12 +12,6 @@ import appConfig from './lib/config.js';
 
 const init = () => {
   const currentRunArguments = getProcessArguments();
-  const isValidArguments = validateArguments(currentRunArguments);
-
-  if (!isValidArguments.isValid) {
-    return console.log(isValidArguments.error);
-  }
-
   const { mode, path, name, processArguments } = currentRunArguments;
 
   const isInteractiveMode = mode === '--interactive' || mode === '--i';
@@ -25,6 +19,11 @@ const init = () => {
   const outputFilesList = [...appConfig.interactive.defaultOptions];
 
   if (isSilentMode && processArguments && !isInteractiveMode) {
+    const isValidArguments = validateArguments(currentRunArguments);
+
+    if (!isValidArguments.isValid) {
+      return console.log(isValidArguments.error);
+    }
     if (mode !== '-c' && mode !== 'create') {
       return console.log(language.INVALID_USAGE_ERR);
     }
