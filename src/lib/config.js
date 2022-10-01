@@ -1,7 +1,7 @@
 const appConfig = {
   interactive: {
     defaultOptions: ['folder', 'jsx', 'css'],
-    extrasOptions: ['js', 'index'],
+    extrasOptions: ['js', 'index', 'scss'],
   },
 };
 

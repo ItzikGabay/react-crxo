@@ -21,32 +21,32 @@ export const componentPrompt = () => {
       message: 'Which file do you want to create?',
       choices: [
         {
-          name: 'Lite template (no state, no props) - (Enabled) 🚀',
+          name: 'Lite template (no state, no props)',
           default: true,
           value: 'lite',
         },
         {
-          name: 'Regular template (state, props) - SOON',
-          disabled: true,
+          name: 'Regular template (state, useEffect)',
+          disabled: false,
           value: 'regular',
         },
         {
-          name: 'Large template (effects, classes) - SOON',
+          name: 'Large template (regular + getServerSideProps, more)',
           disabled: true,
           value: 'large',
         },
         {
-          name: 'button - SOON',
+          name: 'button',
           disabled: true,
           value: 'button',
         },
         {
-          name: 'input - SOON',
+          name: 'input',
           disabled: true,
           value: 'input',
         },
         {
-          name: 'text - SOON',
+          name: 'text',
           disabled: true,
           value: 'text',
         },

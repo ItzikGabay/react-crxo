@@ -1,8 +1,8 @@
-import path from 'path';
-import { shortJsx, shortCss } from '../react-library/short.js';
 import fs from 'fs';
-import language from './language.js';
+import path from 'path';
 import appConfig from './config.js';
+import language from './language.js';
+import { shortJsx, shortCss } from '../react-library/short.js';
 
 function upperFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -36,12 +36,10 @@ function _cleanPath(_path) {
 }
 
 function extractData(componentName, userInputPath = '') {
-  const componentNameUppercased = uppercasedString(componentName);
-  const componentNameLowercased = underscoredString(componentName);
+  const cnUppercased = uppercasedString(componentName);
+  const cnLowercased = underscoredString(componentName);
   const cleanUserInputPath = _cleanPath(userInputPath);
-  let folderPath = `${path.resolve(
-    componentNameUppercased,
-  )}/${cleanUserInputPath}`;
+  let folderPath = `${path.resolve(cnUppercased)}/${cleanUserInputPath}`;
 
   if (folderPath[folderPath.length - 1] === '/' && userInputPath.length < 3) {
     folderPath = folderPath.slice(0, -1);
@@ -54,10 +52,10 @@ function extractData(componentName, userInputPath = '') {
   return {
     folderPath,
     componentName,
-    componentNameUppercased,
-    componentNameLowercased,
+    cnUppercased,
+    cnLowercased,
     indexFilePath: `${folderPath}index.js`,
-    filePathWithoutExtension: `${folderPath}${componentNameUppercased}`,
+    filePathWithoutExtension: `${folderPath}${cnUppercased}`,
   };
 }
 
@@ -71,8 +69,8 @@ export function createFiles(
     folderPath,
     indexFilePath,
     filePathWithoutExtension,
-    componentNameUppercased,
-    componentNameLowercased,
+    cnUppercased,
+    cnLowercased,
     componentName,
   } = extractData(name, filesPath);
 
@@ -91,8 +89,8 @@ export function createFiles(
         fs.writeFileSync(
           `${filePathWithoutExtension}.jsx`,
           shortJsx(
-            componentNameLowercased,
-            componentNameUppercased,
+            cnLowercased,
+            cnUppercased,
             filesToCreate.includes('scss') ? 'scss' : 'css',
             componentTemplate,
           ),
@@ -101,20 +99,20 @@ export function createFiles(
       case 'css':
         fs.writeFileSync(
           `${filePathWithoutExtension}.module.css`,
-          shortCss(componentNameLowercased, 'css'),
+          shortCss(cnLowercased, 'css'),
         );
         break;
       case 'scss':
         fs.writeFileSync(
           `${filePathWithoutExtension}.module.scss`,
-          shortCss(componentNameLowercased, 'scss'),
+          shortCss(cnLowercased, 'scss'),
         );
         break;
     }
   });
 
   console.log(
-    `[crxo][success] component named "${componentName}" generated at "${folderPath}"`,
+    `[crxo][success] component "${componentName}" generated at "${folderPath}"`,
   );
 }
 

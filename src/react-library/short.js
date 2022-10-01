@@ -1,19 +1,19 @@
-export const shortJsx = (name, uppercased, cssType, templateType) => {
-  return `import styles from "./${name}.${
-    cssType === 'css' ? 'module.css' : 'module.scss'
-  }";
+import { addTemplateImports, addTemplateHooks } from './imports.js';
 
+export const shortJsx = (name, uppercased, cssType, templateType) => {
+  return `${addTemplateImports(templateType, uppercased, cssType)}
 const ${uppercased} = () => {
+  ${addTemplateHooks()}
   return (
     <div className={styles.${cssType === 'css' ? name + '__' : ''}container}>
-        <div className={styles.${cssType === 'css' ? name + '__' : ''}main}>
-          <p className={styles.${
-            cssType === 'css' && name + '__'
-          }title}>Component created successfully.</p>
-        </div>
+      <div className={styles.${cssType === 'css' ? name + '__' : ''}main}>
+        <p className={styles.${
+          cssType === 'css' && name + '__'
+        }title}>Component created successfully.</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default ${uppercased};`;
 };
