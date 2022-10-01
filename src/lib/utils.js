@@ -63,6 +63,7 @@ export function createFiles(
   name,
   filesToCreate,
   componentTemplate,
+  nameConvention,
   filesPath = '',
 ) {
   const {
@@ -128,6 +129,10 @@ export function getProcessArguments() {
 }
 
 export function validateArguments({ mode, path, name, processArguments }) {
+  if (mode === '--interactive' || mode === '--i') {
+    return { isValid: true };
+  }
+
   if (!mode || !path || !name) {
     return { valid: false, error: language.INVALID_USAGE_ERR };
   }

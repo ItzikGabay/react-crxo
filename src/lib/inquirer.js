@@ -6,19 +6,19 @@ export const componentPrompt = () => {
   return inquirer.prompt([
     {
       name: 'inputComponentName',
-      message: 'What is the component name (e.g exampleComponent) 💼 :',
+      message: 'The new component name? 💼 :',
       validate: input => validateInputValue(input),
     },
     {
       type: 'checkbox',
       name: 'generateFileTypes',
-      message: 'Which files to create?',
+      message: 'Which files types to generate?',
       choices: getDefaultFilesTypesOptions(),
     },
     {
       type: 'list',
       name: 'componentTemplate',
-      message: 'Which file do you want to create?',
+      message: 'Which template?',
       choices: [
         {
           name: 'Lite template (no state, no props)',
@@ -49,6 +49,25 @@ export const componentPrompt = () => {
           name: 'text',
           disabled: true,
           value: 'text',
+        },
+      ],
+    },
+    {
+      type: 'list',
+      name: 'nameConvention',
+      message: 'Which convention?',
+      choices: [
+        {
+          name: 'ComponentName (default)',
+          default: true,
+        },
+        {
+          name: 'componentName',
+          disabled: true,
+        },
+        {
+          name: 'component-name',
+          disabled: true,
         },
       ],
     },

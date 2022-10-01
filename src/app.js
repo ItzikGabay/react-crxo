@@ -14,16 +14,16 @@ import appConfig from './lib/config.js';
 const init = async () => {
   const { mode, path, name, processArguments } = getProcessArguments();
   const { isSilentMode, isInteractiveMode } = getApplicationModes(mode);
+  const isValidArguments = validateArguments({
+    mode,
+    path,
+    name,
+    processArguments,
+  });
 
-  // Interactive mode
+  // Silent mode
   if (isSilentMode && processArguments && !isInteractiveMode) {
     const outputFilesList = [...appConfig.interactive.defaultOptions];
-    const isValidArguments = validateArguments({
-      mode,
-      path,
-      name,
-      processArguments,
-    });
 
     if (!isValidArguments.isValid) {
       throw new Error(isValidArguments.error);
@@ -38,14 +38,24 @@ const init = async () => {
       }
     });
 
-    return createFiles(name, outputFilesList, 'regular', path);
+    return createFiles(
+      name,
+      outputFilesList,
+      appConfig.interactive.defaultComponentTemplate,
+      appConfig.interactive.defaultNameConvention,
+      path,
+    );
   }
 
-  // Silent mode
+  // Interactive mode
   try {
-    const { inputComponentName, generateFileTypes, componentTemplate } =
-      await componentPrompt();
-    createFiles(inputComponentName, generateFileTypes, componentTemplate);
+    const output = await componentPrompt();
+    createFiles(
+      output.inputComponentName,
+      output.generateFileTypes,
+      output.componentTemplate,
+      output.nameConvention,
+    );
   } catch (error) {
     if (error.isTtyError) {
       throw new Error(language.ERROR_RENDERING_ERR);
