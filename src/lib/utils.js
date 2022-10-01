@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import appConfig from './config.js';
 import language from './language.js';
-import { shortJsx, shortCss } from '../react-library/short.js';
+import { JSXtemplate, CSStemplate } from '../react-library/template.js';
 
 function upperFirstLetter(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -88,7 +88,7 @@ export function createFiles(
       case 'jsx':
         fs.writeFileSync(
           `${filePathWithoutExtension}.jsx`,
-          shortJsx(
+          JSXtemplate(
             cnLowercased,
             cnUppercased,
             filesToCreate.includes('scss') ? 'scss' : 'css',
@@ -99,13 +99,13 @@ export function createFiles(
       case 'css':
         fs.writeFileSync(
           `${filePathWithoutExtension}.module.css`,
-          shortCss(cnLowercased, 'css'),
+          CSStemplate(cnLowercased, 'css'),
         );
         break;
       case 'scss':
         fs.writeFileSync(
           `${filePathWithoutExtension}.module.scss`,
-          shortCss(cnLowercased, 'scss'),
+          CSStemplate(cnLowercased, 'scss'),
         );
         break;
     }

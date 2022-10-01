@@ -1,15 +1,15 @@
 export function addTemplateImports(templateType, name, cssType) {
   let importsValue = '';
 
+  if (templateType === 'regular') {
+    importsValue += "import { useState, useEffect } from 'react';";
+    importsValue += '\n';
+  }
+
   if (templateType === 'lite' || templateType === 'regular') {
     importsValue += `import styles from "./${name}.${
       cssType === 'css' ? 'module.css' : 'module.scss'
     }";`;
-    importsValue += '\n';
-  }
-
-  if (templateType === 'regular') {
-    importsValue += "import { useState, useEffect } from 'react';";
     importsValue += '\n';
   }
 

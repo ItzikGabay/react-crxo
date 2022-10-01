@@ -1,6 +1,6 @@
 import { addTemplateImports, addTemplateHooks } from './imports.js';
 
-export const shortJsx = (name, uppercased, cssType, templateType) => {
+export const JSXtemplate = (name, uppercased, cssType, templateType) => {
   return `${addTemplateImports(templateType, uppercased, cssType)}
 const ${uppercased} = () => {
   ${addTemplateHooks()}
@@ -18,7 +18,7 @@ const ${uppercased} = () => {
 export default ${uppercased};`;
 };
 
-export const shortCss = (name, cssType) => {
+export const CSStemplate = (name, cssType) => {
   return `.${cssType === 'css' ? name + '__' : ''}container {
     font-size: 200px;
 }`;
