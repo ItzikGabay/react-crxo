@@ -14,10 +14,10 @@ import appConfig from './lib/config.js';
 const init = async () => {
   const { mode, path, name, processArguments } = getProcessArguments();
   const { isSilentMode, isInteractiveMode } = getApplicationModes(mode);
-  const outputFilesList = [...appConfig.interactive.defaultOptions];
 
   // Interactive mode
   if (isSilentMode && processArguments && !isInteractiveMode) {
+    const outputFilesList = [...appConfig.interactive.defaultOptions];
     const isValidArguments = validateArguments({
       mode,
       path,
@@ -38,7 +38,7 @@ const init = async () => {
       }
     });
 
-    return createFiles(name, outputFilesList, 'lite', path);
+    return createFiles(name, outputFilesList, 'regular', path);
   }
 
   // Silent mode
@@ -58,5 +58,4 @@ try {
   await init();
 } catch (error) {
   console.log(error.message);
-  console.debug(error);
 }
