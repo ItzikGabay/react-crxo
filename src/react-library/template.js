@@ -6,11 +6,9 @@ const ${uppercased} = () => {
   ${addTemplateHooks()}
   return (
     <div className={styles.${cssType === 'css' ? name + '__' : ''}container}>
-      <div className={styles.${cssType === 'css' ? name + '__' : ''}main}>
-        <p className={styles.${
-          cssType === 'css' && name + '__'
-        }title}>Component created successfully.</p>
-      </div>
+      <p className={styles.${
+        cssType === 'css' && name + '__'
+      }title}>Component created successfully.</p>
     </div>
   );
 };
