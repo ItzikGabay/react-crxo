@@ -19,7 +19,7 @@ export function addTemplateImports(templateType, name, cssType) {
 export function addTemplateHooks(templateType) {
   let hooksValue = '';
 
-  if (templateType !== 'regular') {
+  if (templateType === 'regular') {
     hooksValue += `const [state, setState] = useState(null);
     
     useEffect(() => {
