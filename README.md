@@ -10,11 +10,14 @@ With this CLI you can produce components exactly as you want, with support for a
 
 <hr>
 
-<h1>Some examples how it's feels:</h1>
+<h1>Some examples:</h1>
+<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-1.png?raw=true" alt="q1" border="0">
+<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-2.png?raw=true" alt="q2" border="0">
+<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-3.png?raw=true" alt="q3" border="0">
+<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-4.png?raw=true" alt="q4" border="0">
+<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/f-1.png?raw=true" alt="f1" border="0">
 
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/SQ9x3N8/Screen-Shot-2022-02-20-at-23-17-30.png" alt="Screen-Shot-2022-02-20-at-23-17-30" border="0"></a>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/WFtDWC0/Screen-Shot-2022-02-20-at-23-16-37.png" alt="Screen-Shot-2022-02-20-at-23-16-37" border="0"></a>
-<a href="https://imgbb.com/"><img src="https://i.ibb.co/1K8qrzC/Screen-Shot-2022-02-20-at-23-16-43.png" alt="Screen-Shot-2022-02-20-at-23-16-43" border="0"></a>
+Or you can view `examples` folder for more examples.
 
 <h1>How to install this CLI?</h1>
 <p>You can install it locally or globally, or just use it with "npx crxo" command without any installations required.</p>
