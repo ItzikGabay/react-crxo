@@ -5,10 +5,8 @@ export const JSXtemplate = (name, uppercased, cssType, templateType) => {
 const ${uppercased} = () => {
   ${addTemplateHooks()}
   return (
-    <div className={styles.${cssType === 'css' ? name + '__' : ''}container}>
-      <p className={styles.${
-        cssType === 'css' && name + '__'
-      }title}>Component created successfully.</p>
+    <div className={styles.container}>
+      <p className={styles.title}>Component created successfully.</p>
     </div>
   );
 };
