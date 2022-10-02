@@ -34,6 +34,9 @@ const init = async () => {
 
     appConfig.interactive.extrasOptions.forEach(option => {
       if (processArguments.includes(`--${option}`)) {
+        if (outputFilesList.includes('css') && option === 'scss') {
+          outputFilesList.splice(outputFilesList.indexOf('css'), 1);
+        }
         outputFilesList.push(option);
       }
     });
