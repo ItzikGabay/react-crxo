@@ -120,6 +120,15 @@ export function createFiles(
 export function getProcessArguments() {
   let [...processArguments] = process.argv;
 
+  // If the user did not insert the path,
+  // We will use the default path and pass
+  // the config option(--tag) to the next index in order
+  // to get it inserted in the proccessArguments after we slicing it.
+  if (processArguments[4].includes('--')) {
+    processArguments[5] = processArguments[4];
+    processArguments[4] = '.';
+  }
+
   return {
     mode: processArguments[2] || '',
     name: processArguments[3] || '',
