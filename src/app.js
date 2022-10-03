@@ -44,7 +44,9 @@ const init = async () => {
     return createFiles(
       name,
       outputFilesList,
-      appConfig.interactive.defaultComponentTemplate,
+      processArguments.includes('--lite')
+        ? 'lite'
+        : appConfig.interactive.defaultComponentTemplate,
       appConfig.interactive.defaultNameConvention,
       path,
     );
