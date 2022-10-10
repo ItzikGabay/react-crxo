@@ -16,6 +16,7 @@ export default ${uppercased};`;
 
 export const CSStemplate = (name, cssType) => {
   return `.container {
-    font-size: 200px;
+    color: red;
+    font-size: 40px;
 }`;
 };
