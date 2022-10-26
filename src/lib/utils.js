@@ -83,6 +83,9 @@ export function createFiles(
       case 'index':
         fs.writeFileSync(indexFilePath, '');
         break;
+      case 'controller':
+        fs.writeFileSync(`${filePathWithoutExtension}.controller.js`, '');
+        break;
       case 'js':
         fs.writeFileSync(`${filePathWithoutExtension}.js`, '');
         break;
