@@ -127,7 +127,7 @@ export function getProcessArguments() {
   // We will use the default path and pass
   // the config option(--tag) to the next index in order
   // to get it inserted in the proccessArguments after we slicing it.
-  if (processArguments[4].includes('--')) {
+  if (Array.isArray(processArguments[4]) && processArguments[4].includes('--')) {
     processArguments[5] = processArguments[4];
     processArguments[4] = '.';
   }

@@ -55,6 +55,7 @@ const init = async () => {
   // Interactive mode
   try {
     const output = await componentPrompt();
+    console.debug('[debug] ->', { output });
     createFiles(
       output.inputComponentName,
       output.generateFileTypes,
@@ -72,5 +73,5 @@ const init = async () => {
 try {
   await init();
 } catch (error) {
-  console.log(error.message);
+  console.log("Internal error: ", error);
 }
