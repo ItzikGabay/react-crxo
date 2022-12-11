@@ -5,16 +5,20 @@ export const JSXtemplate = (name, uppercased, cssType, templateType) => {
 const ${uppercased} = () => {
   ${addTemplateHooks(templateType)}
   return (
-    <div className={styles.container}>
-      <p className={styles.title}>Component created successfully.</p>
-    </div>
+    <section className={styles.container}>
+      <header className={styles.header}>
+          <p>Component created successfully.</p>
+      </header>
+      <main className={styles.main}></main>
+      <footer className={styles.footer}></footer>
+    </section>
   );
 };
 
 export default ${uppercased};`;
 };
 
-export const CSStemplate = (name, cssType) => {
+export const CSStemplate = () => {
   return `.container {
     color: red;
     font-size: 40px;
