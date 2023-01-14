@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
-import appConfig from './config.js';
-import { getDefaultFilesTypesOptions, validateInputValue } from './utils.js';
+import { getDefaultFilesTypesOptions } from './utils.js';
+import { validateInputValue } from './validation.js';
 
 export const componentPrompt = () => {
   return inquirer.prompt([
@@ -22,33 +22,33 @@ export const componentPrompt = () => {
       choices: [
         {
           name: 'Lite template (no state, no props)',
-          default: true,
           value: 'lite',
+          default: true,
         },
         {
           name: 'Regular template (state, useEffect)',
-          disabled: false,
           value: 'regular',
+          disabled: false,
         },
         {
           name: 'Large template (regular + getServerSideProps, more)',
-          disabled: true,
           value: 'large',
+          disabled: true,
         },
         {
           name: 'button',
-          disabled: true,
           value: 'button',
+          disabled: true,
         },
         {
           name: 'input',
-          disabled: true,
           value: 'input',
+          disabled: true,
         },
         {
           name: 'text',
-          disabled: true,
           value: 'text',
+          disabled: true,
         },
       ],
     },
@@ -59,6 +59,7 @@ export const componentPrompt = () => {
       choices: [
         {
           name: 'ComponentName (default)',
+          value: 'default',
           default: true,
         },
         {
