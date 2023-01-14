@@ -9,7 +9,7 @@ export function uppercasedString(str) {
 
 export function underscoredString(str) {
   const words = str.split('-');
-  return words.map(word => word).join('_');
+  return words.filter(word => word).join('_');
 }
 
 export function cleanPath(_path) {

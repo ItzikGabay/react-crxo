@@ -1,7 +1,7 @@
 #! /usr/bin/env node
 
 import { componentPrompt } from './lib/inquirer.js';
-import { createFiles } from './lib/utils.js';
+import { createFiles, getApplicationModes } from './lib/utils.js';
 import { warnUser } from './lib/logs.js';
 import { validateComponentName } from './lib/validation.js';
 
@@ -9,9 +9,9 @@ import language from './lib/language.js';
 import appConfig from './lib/config.js';
 
 const init = async () => {
-  const mode = process.argv[2];
-  const isSilentMode = mode === 'create' || mode === '-c';
-  const isInteractiveMode = mode === 'interactive' || mode === '-i' || !mode;
+  const { isSilentMode, isInteractiveMode } = getApplicationModes(
+    process.argv[2],
+  );
 
   if (isInteractiveMode) {
     try {
