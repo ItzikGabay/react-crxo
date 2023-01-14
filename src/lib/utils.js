@@ -1,44 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 import appConfig from './config.js';
-import language from './language.js';
+
 import { JSXtemplate, CSStemplate } from '../react-library/template.js';
-
-function upperFirstLetter(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function uppercasedString(str) {
-  const words = str.split('-');
-  return words.map(word => upperFirstLetter(word)).join('');
-}
-
-function underscoredString(str) {
-  const words = str.split('-');
-  return words.map(word => word).join('_');
-}
-
-function _cleanPath(_path) {
-  if (_path === './' || _path === '.') {
-    _path = '';
-  }
-
-  if (_path[0] === '/') {
-    _path = _path.slice(1);
-  }
-
-  if (_path.includes('./')) {
-    _path = _path.replace(/^\.\//, '') + '/';
-  } else {
-    _path += '/';
-  }
-  return _path;
-}
+import { cleanPath, uppercasedString, underscoredString } from './string.js';
 
 function extractData(componentName, userInputPath = '') {
   const cnUppercased = uppercasedString(componentName);
   const cnLowercased = underscoredString(componentName);
-  const cleanUserInputPath = _cleanPath(userInputPath);
+  const cleanUserInputPath = cleanPath(userInputPath);
   let folderPath = `${path.resolve(cnUppercased)}/${cleanUserInputPath}`;
 
   if (folderPath[folderPath.length - 1] === '/' && userInputPath.length < 3) {
@@ -75,90 +45,53 @@ export function createFiles(
     componentName,
   } = extractData(name, filesPath);
 
-  filesToCreate.forEach(fileType => {
-    switch (fileType) {
-      case 'folder':
-        fs.mkdirSync(folderPath);
-        break;
-      case 'index':
-        fs.writeFileSync(indexFilePath, '');
-        break;
-      case 'controller':
-        fs.writeFileSync(`${filePathWithoutExtension}.controller.js`, '');
-        break;
-      case 'js':
-        fs.writeFileSync(`${filePathWithoutExtension}.js`, '');
-        break;
-      case 'jsx':
-        fs.writeFileSync(
-          `${filePathWithoutExtension}.jsx`,
-          JSXtemplate(
-            cnLowercased,
-            cnUppercased,
-            filesToCreate.includes('scss') ? 'scss' : 'css',
-            componentTemplate,
-          ),
-        );
-        break;
-      case 'css':
-        fs.writeFileSync(
-          `${filePathWithoutExtension}.module.css`,
-          CSStemplate(cnLowercased, 'css'),
-        );
-        break;
-      case 'scss':
-        fs.writeFileSync(
-          `${filePathWithoutExtension}.module.scss`,
-          CSStemplate(cnLowercased, 'scss'),
-        );
-        break;
+  for (let fileType of filesToCreate) {
+    if (fileType === 'folder') {
+      fs.mkdirSync(folderPath);
     }
-  });
+
+    if (fileType === 'index') {
+      fs.writeFileSync(indexFilePath, '');
+    }
+
+    if (fileType === 'js') {
+      fs.writeFileSync(`${filePathWithoutExtension}.js`, '');
+    }
+
+    if (fileType === 'controller') {
+      fs.writeFileSync(`${filePathWithoutExtension}.controller.js`, '');
+    }
+
+    if (fileType === 'css') {
+      fs.writeFileSync(
+        `${filePathWithoutExtension}.module.css`,
+        CSStemplate(cnLowercased, 'css'),
+      );
+    }
+
+    if (fileType === 'scss') {
+      fs.writeFileSync(
+        `${filePathWithoutExtension}.module.scss`,
+        CSStemplate(cnLowercased, 'scss'),
+      );
+    }
+
+    if (fileType === 'jsx') {
+      fs.writeFileSync(
+        `${filePathWithoutExtension}.jsx`,
+        JSXtemplate(
+          cnLowercased,
+          cnUppercased,
+          filesToCreate.includes('scss') ? 'scss' : 'css',
+          componentTemplate,
+        ),
+      );
+    }
+  }
 
   console.log(
     `[crxo][success] component "${componentName}" generated at "${folderPath}"`,
   );
-}
-
-export function getProcessArguments() {
-  let [...processArguments] = process.argv;
-
-  // If the user did not insert the path,
-  // We will use the default path and pass
-  // the config option(--tag) to the next index in order
-  // to get it inserted in the proccessArguments after we slicing it.
-  if (Array.isArray(processArguments[4]) && processArguments[4].includes('--')) {
-    processArguments[5] = processArguments[4];
-    processArguments[4] = '.';
-  }
-
-  return {
-    mode: processArguments[2] || '',
-    name: processArguments[3] || '',
-    path: processArguments[4] || '',
-    processArguments: processArguments.slice(5),
-  };
-}
-
-export function validateArguments({ mode, path, name, processArguments }) {
-  if (mode === '--interactive' || mode === '--i') {
-    return { isValid: true };
-  }
-
-  if (!mode || !path || !name) {
-    return { valid: false, error: language.INVALID_USAGE_ERR };
-  }
-
-  if (mode === '' || path === '' || name === '') {
-    return { valid: false, error: language.INVALID_CHARACTER_NUM_ERR };
-  }
-
-  if (name.includes('--') || name.includes('#') || path.includes('--')) {
-    // TODO: Add regex instead
-    return { valid: false, error: language.INVALID_CHARACTER_ERR };
-  }
-
-  return { isValid: true };
 }
 
 export function getDefaultFilesTypesOptions() {
@@ -173,10 +106,6 @@ export function getDefaultFilesTypesOptions() {
       checked: appConfig.interactive.defaultOptions.includes(type),
     };
   });
-}
-
-export function validateInputValue(input) {
-  return /^[a-zA-Z0-9-]*$/.test(input) && input.length > 1;
 }
 
 export function getApplicationModes(mode) {
