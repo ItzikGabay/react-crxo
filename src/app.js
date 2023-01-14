@@ -1,77 +1,87 @@
 #! /usr/bin/env node
 
 import { componentPrompt } from './lib/inquirer.js';
-import {
-  getProcessArguments,
-  validateArguments,
-  createFiles,
-  getApplicationModes,
-} from './lib/utils.js';
+import { createFiles } from './lib/utils.js';
+import { warnUser } from './lib/logs.js';
+import { validateComponentName } from './lib/validation.js';
 
 import language from './lib/language.js';
 import appConfig from './lib/config.js';
 
 const init = async () => {
-  const { mode, path, name, processArguments } = getProcessArguments();
-  const { isSilentMode, isInteractiveMode } = getApplicationModes(mode);
-  const isValidArguments = validateArguments({
-    mode,
-    path,
-    name,
-    processArguments,
-  });
+  const mode = process.argv[2];
+  const isSilentMode = mode === 'create' || mode === '-c';
+  const isInteractiveMode = mode === 'interactive' || mode === '-i' || !mode;
 
-  // Silent mode
-  if (isSilentMode && processArguments && !isInteractiveMode) {
-    const outputFilesList = [...appConfig.interactive.defaultOptions];
+  if (isInteractiveMode) {
+    try {
+      const output = await componentPrompt();
 
-    if (!isValidArguments.isValid) {
-      throw new Error(isValidArguments.error);
-    }
-    if (mode !== '-c' && mode !== 'create') {
-      throw new Error(language.INVALID_USAGE_ERR);
-    }
-
-    appConfig.interactive.extrasOptions.forEach(option => {
-      if (processArguments.includes(`--${option}`)) {
-        if (outputFilesList.includes('css') && option === 'scss') {
-          outputFilesList.splice(outputFilesList.indexOf('css'), 1);
-        }
-        outputFilesList.push(option);
+      createFiles(
+        output.inputComponentName,
+        output.generateFileTypes,
+        output.componentTemplate,
+        output.nameConvention,
+      );
+    } catch (error) {
+      if (error.isTtyError) {
+        throw new Error(language.ERROR_RENDERING_ERR);
       }
-    });
+      throw new Error(language.SOMETHING_WRONG_ERR);
+    }
 
-    return createFiles(
+    return;
+  }
+
+  if (isSilentMode) {
+    const fileTypeList = [...appConfig.interactive.defaultOptions];
+    const extraTypesOptions = appConfig.interactive.extrasOptions;
+    let [name, path, ...processArguments] = process.argv.slice(3);
+
+    if (!validateComponentName(name)) {
+      return warnUser(language.INVALID_USAGE_ERR);
+    }
+
+    if (!path) {
+      path = '.';
+    }
+
+    for (let argument of processArguments) {
+      // Remove '--' from the type [e.g. --js => js]
+      argument = argument.replace('--', '');
+
+      // In case of scss type, remove the default css from the list
+      if (argument === 'scss') {
+        fileTypeList.splice(fileTypeList.indexOf('css'), 1);
+      }
+
+      // Check if the argument is a valid type
+      if (extraTypesOptions.includes(argument)) {
+        fileTypeList.push(argument);
+      }
+    }
+
+    // current only 'regular' or 'lite'
+    const componentTemplate = processArguments.includes('--regular')
+      ? 'regular'
+      : appConfig.interactive.defaultComponentTemplate;
+
+    createFiles(
       name,
-      outputFilesList,
-      processArguments.includes('--regular')
-        ? 'regular'
-        : appConfig.interactive.defaultComponentTemplate,
+      fileTypeList,
+      componentTemplate,
       appConfig.interactive.defaultNameConvention,
       path,
     );
+
+    return;
   }
 
-  // Interactive mode
-  try {
-    const output = await componentPrompt();
-    console.debug('[debug] ->', { output });
-    createFiles(
-      output.inputComponentName,
-      output.generateFileTypes,
-      output.componentTemplate,
-      output.nameConvention,
-    );
-  } catch (error) {
-    if (error.isTtyError) {
-      throw new Error(language.ERROR_RENDERING_ERR);
-    }
-    throw new Error(language.SOMETHING_WRONG_ERR);
-  }
+  return warnUser(language.INVALID_USAGE_ERR);
 };
 
 try {
   await init();
 } catch (error) {
-  console.log("Internal error: ", error);
+  console.log('Internal error: ', error);
 }
