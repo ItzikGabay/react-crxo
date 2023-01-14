@@ -1,12 +1,13 @@
 #! /usr/bin/env node
 
 import { componentPrompt } from './lib/inquirer.js';
-import { createFiles, getApplicationModes } from './lib/utils.js';
-import { warnUser } from './lib/logs.js';
+import { getApplicationModes } from './lib/utils.js';
+import { successLog, warnUser } from './lib/logs.js';
 import { validateComponentName } from './lib/validation.js';
 
 import language from './lib/language.js';
 import appConfig from './lib/config.js';
+import { createFiles } from './lib/fs.js';
 
 const init = async () => {
   const { isSilentMode, isInteractiveMode } = getApplicationModes(
@@ -16,13 +17,7 @@ const init = async () => {
   if (isInteractiveMode) {
     try {
       const output = await componentPrompt();
-
-      createFiles(
-        output.inputComponentName,
-        output.generateFileTypes,
-        output.componentTemplate,
-        output.nameConvention,
-      );
+      createFiles.apply(null, Object.values(output));
     } catch (error) {
       if (error.isTtyError) {
         throw new Error(language.ERROR_RENDERING_ERR);
@@ -66,13 +61,15 @@ const init = async () => {
       ? 'regular'
       : appConfig.interactive.defaultComponentTemplate;
 
-    createFiles(
+    const output = [
       name,
       fileTypeList,
       componentTemplate,
       appConfig.interactive.defaultNameConvention,
       path,
-    );
+    ];
+
+    createFiles.apply(null, output);
 
     return;
   }
@@ -82,6 +79,12 @@ const init = async () => {
 
 try {
   await init();
+  successLog(language.THANK_YOU_MSG);
 } catch (error) {
-  console.log('Internal error: ', error);
+  if (error.code === 'EEXIST') {
+    warnUser(language.DIR_ALREADY_EXISTS_ERR);
+  } else {
+    warnUser(language.INTERNAL_ERR, error);
+    console.log(error);
+  }
 }

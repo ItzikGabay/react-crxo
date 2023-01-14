@@ -22,6 +22,10 @@ export const consoleUser = (color, output) => {
   console.log(`${color}${output}\x1b[0m`);
 };
 
+export const successLog = output => {
+  consoleUser('green', output);
+};
+
 export const warnUser = message => {
   consoleUser('red', message);
 };

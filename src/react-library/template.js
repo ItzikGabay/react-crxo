@@ -1,10 +1,12 @@
 import { addTemplateImports, addTemplateHooks } from './imports.js';
 
 export const JSXtemplate = (name, uppercased, cssType, templateType) => {
-  return `${addTemplateImports(templateType, uppercased, cssType)}
+  const templateImports = addTemplateImports(templateType, uppercased, cssType);
+  const templateHooks = addTemplateHooks(templateType);
+
+  return `${templateImports}
 const ${uppercased} = () => {
-  ${addTemplateHooks(templateType)}
-  return (
+  ${templateHooks} return (
     <section className={styles.container}>
       <header className={styles.header}>
           <p>Component created successfully.</p>

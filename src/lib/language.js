@@ -9,6 +9,10 @@ const language = {
   NO_ARGUMENTS_ERR: 'No arguments provided.',
   NO_CMP_NAME_ERR: 'No component name found. Please provide a component name.',
   PROVIDE_VALID_NAME_ERR: 'Please provide a valid component name.',
+  DIR_ALREADY_EXISTS_ERR:
+    'Directory already exists. Please provide a new name.',
+  INTERNAL_ERR: 'Internal error. Please try again: ',
+  THANK_YOU_MSG: 'Thank you for using crxo!',
 };
 
 export default language;
