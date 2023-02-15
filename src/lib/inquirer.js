@@ -1,37 +1,38 @@
 import inquirer from 'inquirer';
 import { getDefaultFilesTypesOptions } from './utils.js';
 import { validateInputValue } from './validation.js';
+import { questions } from './language.js';
 
-export const componentPrompt = () => {
-  return inquirer.prompt([
+const _generateInquirerFields = () => {
+  return [
     {
       name: 'inputComponentName',
-      message: 'The new component name? 💼 :',
+      message: questions.QUESTION_COMPONENT_NAME,
       validate: input => validateInputValue(input),
     },
     {
       type: 'checkbox',
       name: 'generateFileTypes',
-      message: 'Which files types to generate?',
+      message: questions.QUESTION_FILE_TYPES,
       choices: getDefaultFilesTypesOptions(),
     },
     {
       type: 'list',
       name: 'componentTemplate',
-      message: 'Which template?',
+      message: questions.QUESTION_TEMPLATE,
       choices: [
         {
-          name: 'Lite template (no state, no props)',
+          name: questions.QUESTION_TEMPLATE_LITE,
           value: 'lite',
           default: true,
         },
         {
-          name: 'Regular template (state, useEffect)',
+          name: questions.QUESTION_TEMPLATE_REGULAR,
           value: 'regular',
           disabled: false,
         },
         {
-          name: 'Large template (regular + getServerSideProps, more)',
+          name: questions.QUESTION_TEMPLATE_LARGE,
           value: 'large',
           disabled: true,
         },
@@ -55,22 +56,34 @@ export const componentPrompt = () => {
     {
       type: 'list',
       name: 'nameConvention',
-      message: 'Which convention?',
+      message: questions.QUESTION_CONVENTION,
       choices: [
         {
-          name: 'ComponentName (default)',
-          value: 'default',
+          name: questions.QUESTION_CONVENTION_DEFAULT,
+          value: 'default', // change to PASCAL instead of Default
           default: true,
         },
         {
-          name: 'componentName',
+          name: questions.QUESTION_CONVENTION_CAMEL,
           disabled: true,
+          value: 'camel',
         },
         {
-          name: 'component-name',
+          name: questions.QUESTION_CONVENTION_KEBAB,
           disabled: true,
+          value: 'kebab',
+        },
+        {
+          name: questions.QUESTION_CONVENTION_SNAKE,
+          disabled: true,
+          value: 'snake',
         },
       ],
     },
-  ]);
+  ];
+};
+
+export const componentPrompt = () => {
+  const fields = _generateInquirerFields();
+  return inquirer.prompt(fields);
 };
