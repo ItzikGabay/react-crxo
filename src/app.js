@@ -17,6 +17,7 @@ const init = async () => {
   if (isInteractiveMode) {
     try {
       const output = await componentPrompt();
+      // to apply all arguments as parameters
       createFiles.apply(null, Object.values(output));
     } catch (error) {
       if (error.isTtyError) {
@@ -29,7 +30,7 @@ const init = async () => {
   }
 
   if (isSilentMode) {
-    const fileTypeList = [...appConfig.interactive.defaultOptions];
+    const fileTypeList = [...appConfig.interactive.defaultOptions]; // copy the array
     const extraTypesOptions = appConfig.interactive.extrasOptions;
     let [name, path, ...processArguments] = process.argv.slice(3);
 
