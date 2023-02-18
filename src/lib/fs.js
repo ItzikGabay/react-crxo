@@ -18,6 +18,21 @@ export const createComponentFileType = (name, type, data = '') => {
   return fs.writeFileSync(`${name}.${type}.js`, data);
 };
 
+export const generateComponentFiles = filesConfig => {
+  console.debug('[debug] ->', { filesConfig });
+  const { generateFileTypes, inputComponentName } = filesConfig;
+
+  generateFileTypes.value.forEach(file => {
+    generateFileByType(inputComponentName.value, file);
+  });
+};
+
+const generateFileByType = (name, fileType) => {
+  switch (fileType) {
+    case 'folder':
+  }
+};
+
 export function createFiles(
   name,
   filesToCreate,

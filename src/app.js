@@ -1,13 +1,16 @@
 #! /usr/bin/env node
 
-import { componentPrompt } from './lib/inquirer.js';
-import { getApplicationModes } from './lib/utils.js';
+import { startInteractiveMode } from './lib/inquirer.js';
+import {
+  convertFlatObjectToNestedObject,
+  getApplicationModes,
+} from './lib/utils.js';
 import { successLog, warnUser } from './lib/logs.js';
 import { validateComponentName } from './lib/validation.js';
 
 import language from './lib/language.js';
 import appConfig from './lib/config.js';
-import { createFiles } from './lib/fs.js';
+import { createFiles, generateComponentFiles } from './lib/fs.js';
 
 const init = async () => {
   const { isSilentMode, isInteractiveMode } = getApplicationModes(
@@ -16,7 +19,19 @@ const init = async () => {
 
   if (isInteractiveMode) {
     try {
-      const output = await componentPrompt();
+      const output = await startInteractiveMode();
+      generateComponentFiles(output);
+    } catch (error) {
+      if (error.isTtyError) {
+        throw new Error(language.ERROR_RENDERING_ERR);
+      }
+      throw new Error(language.SOMETHING_WRONG_ERR);
+    }
+
+    return;
+
+    try {
+      const output = await startInteractiveMode();
       // to apply all arguments as parameters
       createFiles.apply(null, Object.values(output));
     } catch (error) {

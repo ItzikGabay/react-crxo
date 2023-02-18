@@ -52,3 +52,15 @@ export function extractComponentPaths(componentName, userInputPath) {
     cnWithCssSupport,
   };
 }
+
+export const convertFlatObjectToNestedObject = obj => {
+  const result = {};
+
+  Object.keys(obj).map(key => {
+    result[key] = {
+      value: obj[key],
+    };
+  });
+
+  return result;
+};

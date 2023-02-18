@@ -1,5 +1,8 @@
 import inquirer from 'inquirer';
-import { getDefaultFilesTypesOptions } from './utils.js';
+import {
+  convertFlatObjectToNestedObject,
+  getDefaultFilesTypesOptions,
+} from './utils.js';
 import { validateInputValue } from './validation.js';
 import { questions } from './language.js';
 
@@ -15,6 +18,22 @@ const _generateInquirerFields = () => {
       name: 'generateFileTypes',
       message: questions.QUESTION_FILE_TYPES,
       choices: getDefaultFilesTypesOptions(),
+    },
+    {
+      type: 'list',
+      name: 'engine',
+      message: 'Which engine do you want to use?',
+      choices: [
+        {
+          name: 'typescript',
+          value: 'typescript',
+          default: true,
+        },
+        {
+          name: 'javascript',
+          value: 'javascript',
+        },
+      ],
     },
     {
       type: 'list',
@@ -83,7 +102,15 @@ const _generateInquirerFields = () => {
   ];
 };
 
-export const componentPrompt = () => {
-  const fields = _generateInquirerFields();
-  return inquirer.prompt(fields);
+const getEngine = () => {};
+
+export const startInteractiveMode = async () => {
+  try {
+    const prompt = await inquirer.prompt(_generateInquirerFields());
+    const promptAsObject = convertFlatObjectToNestedObject(prompt);
+
+    return promptAsObject;
+  } catch (error) {
+    throw error;
+  }
 };
