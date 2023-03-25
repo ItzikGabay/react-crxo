@@ -2,17 +2,18 @@
   "name": "crxo",
   "version": "1.2.8",
   "description": "Helping you creating new react component trough interactive CLI.",
-  "main": "src/v1/app.js",
+  "main": "dist/v1/app.js",
   "type": "module",
   "directories": {
-    "lib": "src/v1/lib"
+    "lib": "dist/v1/lib"
   },
   "bin": {
-    "start": "src/v1/app.js",
-    "start:v2": "src/v2/index.js"
+    "start": "dist/v1/app.js"
   },
   "scripts": {
-    "start": "node src/v1/app.js"
+    "start:v1": "node dist/v1/app.js",
+    "build:v1": "tsc",
+    "start:v2": "tsc src/v2/index.ts"
   },
   "author": "itzikgabay",
   "license": "ISC",
@@ -26,6 +27,8 @@
   "private": false,
   "devDependencies": {
     "eslint": "^8.16.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2"
   }
 }
