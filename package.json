@@ -2,16 +2,17 @@
   "name": "crxo",
   "version": "1.2.8",
   "description": "Helping you creating new react component trough interactive CLI.",
-  "main": "src/app.js",
+  "main": "src/v1/app.js",
   "type": "module",
   "directories": {
-    "lib": "src/lib"
+    "lib": "src/v1/lib"
   },
   "bin": {
-    "start": "src/app.js"
+    "start": "src/v1/app.js",
+    "start:v2": "src/v2/index.js"
   },
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/v1/app.js"
   },
   "author": "itzikgabay",
   "license": "ISC",
