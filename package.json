@@ -5,15 +5,15 @@
   "main": "dist/v1/app.js",
   "type": "module",
   "directories": {
-    "lib": "dist/v1/lib"
+    "lib": "dist/v2/lib"
   },
   "bin": {
-    "start": "dist/v1/app.js"
+    "start": "dist/v2/index.js"
   },
   "scripts": {
-    "start:v1": "node dist/v1/app.js",
+    "start:v1": "node dist/v2/index.js",
     "build:v1": "tsc",
-    "start:v2": "tsc src/v2/index.ts"
+    "start:v2": "tsc && ./dist/v2/index.js"
   },
   "author": "itzikgabay",
   "license": "ISC",
@@ -26,6 +26,7 @@
   },
   "private": false,
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "eslint": "^8.16.0",
     "prettier": "^2.7.1",
     "ts-loader": "^9.4.2",
