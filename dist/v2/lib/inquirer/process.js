@@ -35,11 +35,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import inquirer from 'inquirer';
-import { generateInquirerSteps } from './steps.js';
-export var startInquirer = function () { return __awaiter(void 0, void 0, void 0, function () {
+import { engineTypeStep, generateInquirerSteps, inquirerSteps, } from './steps.js';
+export var startInquirer = function (engineType) { return __awaiter(void 0, void 0, void 0, function () {
     var steps;
     return __generator(this, function (_a) {
-        steps = generateInquirerSteps();
+        steps = generateInquirerSteps(inquirerSteps, engineType);
+        return [2 /*return*/, inquirer.prompt(steps)];
+    });
+}); };
+export var getEngineType = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var steps;
+    return __generator(this, function (_a) {
+        steps = generateInquirerSteps(engineTypeStep);
         return [2 /*return*/, inquirer.prompt(steps)];
     });
 }); };

@@ -4,17 +4,12 @@ import { InquirerStepConfig, InquirerStepPartialConfig } from '../types';
 const getEngineChoices = (): InputQuestion => {
   return [
     {
-      name: 'Javascript',
-      value: 'js',
-    },
-    {
       name: 'Typescript',
       value: 'ts',
     },
     {
-      name: 'Havascript',
-      value: 'hs',
-      disabled: true,
+      name: 'Javascript',
+      value: 'js',
     },
   ];
 };

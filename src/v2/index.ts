@@ -6,14 +6,20 @@ import {
   modesRefrence,
 } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
+import { getEngineType } from './lib/inquirer/process.js';
 
 const init = async () => {
   const [mode] = inputArgumnets;
 
-  const output = await (modesRefrence[mode]?.input() ||
-    modesConfig.interactive.input());
+  // in case there is no mode, use the default mode
+  const currentMode = modesRefrence[mode] || modesConfig.interactive;
 
-  processOutput(output, modesRefrence[mode], {});
+  // first getting the engine type, then the rest of the input
+  const engineType = await getEngineType();
+  const output = await currentMode.input({ engineType });
+
+  // processing the output by generated object
+  processOutput(output, currentMode, { engineType });
 };
 
 init();

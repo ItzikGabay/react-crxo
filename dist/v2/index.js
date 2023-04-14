@@ -37,18 +37,22 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { inputArgumnets, modesConfig, modesRefrence, } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
+import { getEngineType } from './lib/inquirer/process.js';
 var init = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var mode, output;
-    var _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var mode, currentMode, engineType, output;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
                 mode = inputArgumnets[0];
-                return [4 /*yield*/, (((_a = modesRefrence[mode]) === null || _a === void 0 ? void 0 : _a.input()) ||
-                        modesConfig.interactive.input())];
+                currentMode = modesRefrence[mode] || modesConfig.interactive;
+                return [4 /*yield*/, getEngineType()];
             case 1:
-                output = _b.sent();
-                processOutput(output, modesRefrence[mode], {});
+                engineType = _a.sent();
+                return [4 /*yield*/, currentMode.input({ engineType: engineType })];
+            case 2:
+                output = _a.sent();
+                // processing the output by generated object
+                processOutput(output, currentMode, { engineType: engineType });
                 return [2 /*return*/];
         }
     });

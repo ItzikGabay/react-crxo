@@ -12,17 +12,12 @@ var __assign = (this && this.__assign) || function () {
 var getEngineChoices = function () {
     return [
         {
-            name: 'Javascript',
-            value: 'js',
-        },
-        {
             name: 'Typescript',
             value: 'ts',
         },
         {
-            name: 'Havascript',
-            value: 'hs',
-            disabled: true,
+            name: 'Javascript',
+            value: 'js',
         },
     ];
 };
