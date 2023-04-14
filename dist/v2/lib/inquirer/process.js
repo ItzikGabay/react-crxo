@@ -35,11 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import inquirer from 'inquirer';
-import { generateSteps } from './steps.js';
+import { generateInquirerSteps } from './steps.js';
 export var startInquirer = function () { return __awaiter(void 0, void 0, void 0, function () {
     var steps;
     return __generator(this, function (_a) {
-        steps = generateSteps();
+        steps = generateInquirerSteps();
         return [2 /*return*/, inquirer.prompt(steps)];
     });
 }); };

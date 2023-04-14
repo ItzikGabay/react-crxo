@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
-import { generateSteps } from './steps.js';
+import { generateInquirerSteps } from './steps.js';
 
 export const startInquirer = async () => {
-  const steps = generateSteps();
+  const steps = generateInquirerSteps();
   return inquirer.prompt(steps);
 };

@@ -36,17 +36,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { inputArgumnets, modesConfig, modesRefrence, } from './lib/common/modes.js';
+import { processOutput } from './lib/processor/processor.js';
 var init = function () { return __awaiter(void 0, void 0, void 0, function () {
     var mode, output;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
+    var _a;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
             case 0:
                 mode = inputArgumnets[0];
-                return [4 /*yield*/, (modesRefrence[mode].input() ||
+                return [4 /*yield*/, (((_a = modesRefrence[mode]) === null || _a === void 0 ? void 0 : _a.input()) ||
                         modesConfig.interactive.input())];
             case 1:
-                output = _a.sent();
-                console.log('output: ', output);
+                output = _b.sent();
+                processOutput(output, modesRefrence[mode], {});
                 return [2 /*return*/];
         }
     });
