@@ -13,6 +13,12 @@ var componentNameStepConfig = {
     name: 'componentName',
     message: 'What is the name of the component?',
     type: 'input',
+    validate: function (answer) {
+        if (answer.length < 1) {
+            return 'You must enter a name.';
+        }
+        return true;
+    }
 };
 export var componentNameStep = function () {
     return __assign({}, componentNameStepConfig);

@@ -14,12 +14,15 @@ const init = async () => {
   // in case there is no mode, use the default mode
   const currentMode = modesRefrence[mode] || modesConfig.interactive;
 
+  // todo: maybe to make a wrapper function for engineType and wrap currentMode.input with it.
+
   // first getting the engine type, then the rest of the input
   const engineType = await getEngineType();
-  const output = await currentMode.input({ engineType });
+  const userOutput: any = await currentMode.input({ engineType });
+  const mergedOutputWithEngine = { ...userOutput, ...engineType };
 
   // processing the output by generated object
-  processOutput(output, currentMode, { engineType });
+  processOutput(mergedOutputWithEngine, currentMode, {});
 };
 
 init();

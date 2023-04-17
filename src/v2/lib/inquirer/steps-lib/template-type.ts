@@ -5,13 +5,16 @@ const getTemplateTypeStepChoices = (): InputQuestion => {
   // that's a function for using dynamic values in the future
   return [
     {
-      name: 'Choice 1',
-      value: 'choice1',
+      name: 'Lite',
+      value: 'lite',
     },
     {
-      name: 'Choice 2',
-      value: 'choice2',
-      disabled: true,
+      name: 'Regular',
+      value: 'regular',
+    },
+    {
+      name: 'Extended',
+      value: 'extended',
     },
   ];
 };

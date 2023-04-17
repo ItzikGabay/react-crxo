@@ -11,20 +11,27 @@ var __assign = (this && this.__assign) || function () {
 };
 import { getExtensionsConfig } from '../../processor/files.js';
 var getFilesSelectionStepChoices = function (props) {
-    var isTypescript = props.templateEngine === 'ts';
     var extensionsList = getExtensionsConfig(props.templateEngine);
     // looping through the extensionsConfig object and returning an array of objects
-    return Object.values(extensionsList).map(function (extension) {
+    var items = Object.values(extensionsList).map(function (extension) {
         return {
             name: extension.label,
             value: extension.type,
+            checked: extension.defaultEnabled,
         };
     });
+    return items;
 };
 var filesSelectionStepConfig = {
     name: 'filesTypes',
     message: 'Which files types do you want to generate?',
     type: 'checkbox',
+    validate: function (answer) {
+        if (answer.length < 1) {
+            return 'You must choose at least one file type.';
+        }
+        return true;
+    }
 };
 export var fileSelectionStep = function (props) {
     return __assign(__assign({}, filesSelectionStepConfig), { choices: getFilesSelectionStepChoices(props.engineType) });

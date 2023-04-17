@@ -5,14 +5,17 @@ const getNameConventionChoices = (): InputQuestion => {
   // that's a function for using dynamic values in the future
   return [
     {
-      name: 'Choice 1',
-      value: 'choice1',
+      name: 'camelCase',
+      value: 'camel_case',
     },
     {
-      name: 'Choice 2',
-      value: 'choice2',
-      disabled: true,
+      name: 'PascalCase',
+      value: 'pascal_case',
     },
+    {
+      name: 'kebab-case',
+      value: 'kebab_case',
+    }
   ];
 };
 
