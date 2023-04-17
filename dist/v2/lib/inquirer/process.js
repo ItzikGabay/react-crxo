@@ -1,3 +1,14 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -36,11 +47,19 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import inquirer from 'inquirer';
 import { engineTypeStep, generateInquirerSteps, inquirerSteps, } from './steps.js';
-export var startInquirer = function (engineType) { return __awaiter(void 0, void 0, void 0, function () {
-    var steps;
+export var startInquirer = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var engineType, steps, userOutput;
     return __generator(this, function (_a) {
-        steps = generateInquirerSteps(inquirerSteps, engineType);
-        return [2 /*return*/, inquirer.prompt(steps)];
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, getEngineType()];
+            case 1:
+                engineType = _a.sent();
+                steps = generateInquirerSteps(inquirerSteps, { engineType: engineType });
+                return [4 /*yield*/, inquirer.prompt(steps)];
+            case 2:
+                userOutput = _a.sent();
+                return [2 /*return*/, __assign({ engineType: engineType }, userOutput)];
+        }
     });
 }); };
 export var getEngineType = function () { return __awaiter(void 0, void 0, void 0, function () {

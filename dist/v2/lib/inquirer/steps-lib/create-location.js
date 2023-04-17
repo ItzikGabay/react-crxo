@@ -25,10 +25,7 @@ var createLocationStepConfig = {
     enableGoUpperDirectory: true,
     onlyShowValid: true,
     validate: function (input) {
-        if (isFolderHidden(input)) {
-            return false;
-        }
-        return true;
+        return !isFolderHidden(input);
     }
 };
 export var createLocationStep = function () {
