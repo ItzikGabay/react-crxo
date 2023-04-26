@@ -1,60 +1,68 @@
-export var getExtensionsConfig = function (engine) {
-    var isTypescript = engine === 'ts';
-    var engineTypeLabel = isTypescript ? 'ts' : 'js';
+export var getExtensionsConfig = function (_a) {
+    var engine = _a.engine;
     return {
         folder: {
             type: 'folder',
             label: 'folder',
             extensions: 'folder',
             defaultEnabled: true,
+            endingWithEngineType: false,
         },
         javascript: {
-            label: engineTypeLabel,
-            type: engineTypeLabel,
-            extensions: engineTypeLabel,
+            label: engine,
+            type: engine,
+            extension: engine,
             defaultEnabled: false,
+            endingWithEngineType: true,
         },
         react: {
             type: 'react',
-            label: "react component (".concat(engineTypeLabel, "x)"),
-            extensions: "".concat(engineTypeLabel, "x"),
+            label: "react component (".concat(engine, "x)"),
+            extension: "".concat(engine, "x"),
             defaultEnabled: true,
+            endingWithEngineType: false,
         },
         css: {
             type: 'css',
             label: 'css',
-            extensions: 'css',
+            extension: 'css',
             defaultEnabled: false,
+            endingWithEngineType: false,
         },
         cssModule: {
             type: 'css-module',
             label: 'css-module',
-            extensions: 'module.css',
+            extension: 'module.css',
             defaultEnabled: false,
+            endingWithEngineType: false,
         },
         scssModule: {
             type: 'scss-module',
             label: 'scss-module',
-            extensions: 'module.scss',
+            extension: 'module.scss',
             defaultEnabled: false,
+            endingWithEngineType: false,
         },
         controller: {
             type: 'controller',
             label: 'controller',
-            extensions: 'controller',
+            extension: 'controller',
             defaultEnabled: false,
+            endingWithEngineType: true,
         },
         utils: {
             type: 'utils',
             label: 'utils',
-            extensions: 'utils',
+            extension: 'utils',
             defaultEnabled: false,
+            endingWithEngineType: true,
         },
         types: {
             type: 'types',
             label: 'types',
-            extensions: 'types',
+            extension: 'types',
             defaultEnabled: false,
+            endingWithEngineType: true,
         },
     };
 };

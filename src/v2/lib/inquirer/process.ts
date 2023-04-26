@@ -5,12 +5,12 @@ import {
   inquirerSteps,
 } from './steps.js';
 
-export const startInquirer = async () => {
-  const engineType = await getEngineType();
-  const steps = generateInquirerSteps(inquirerSteps, { engineType });
-  const userOutput = await inquirer.prompt(steps);
+export const getUserFilesSpecifications = async () => {
+  const { templateEngine } = await getEngineType();
+  const stepsJSON = generateInquirerSteps(inquirerSteps, { templateEngine });
+  const userOutput = await inquirer.prompt(stepsJSON);
 
-  return { engineType, ...userOutput };
+  return { templateEngine, ...userOutput };
 };
 
 export const getEngineType = async () => {

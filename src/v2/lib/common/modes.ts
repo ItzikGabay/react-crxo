@@ -1,4 +1,4 @@
-import { startInquirer } from '../inquirer/process.js';
+import { getUserFilesSpecifications } from '../inquirer/process.js';
 
 export const inputArgumnets = process.argv.slice(2);
 
@@ -24,7 +24,7 @@ export const modesConfig = {
     description: 'Interactive mode',
     command: availableModes.interactive,
     openToUsers: true,
-    input: startInquirer,
+    input: getUserFilesSpecifications,
   },
   test: {
     name: 'test',

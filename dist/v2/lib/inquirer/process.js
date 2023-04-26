@@ -47,18 +47,18 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import inquirer from 'inquirer';
 import { engineTypeStep, generateInquirerSteps, inquirerSteps, } from './steps.js';
-export var startInquirer = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var engineType, steps, userOutput;
+export var getUserFilesSpecifications = function () { return __awaiter(void 0, void 0, void 0, function () {
+    var templateEngine, stepsJSON, userOutput;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0: return [4 /*yield*/, getEngineType()];
             case 1:
-                engineType = _a.sent();
-                steps = generateInquirerSteps(inquirerSteps, { engineType: engineType });
-                return [4 /*yield*/, inquirer.prompt(steps)];
+                templateEngine = (_a.sent()).templateEngine;
+                stepsJSON = generateInquirerSteps(inquirerSteps, { templateEngine: templateEngine });
+                return [4 /*yield*/, inquirer.prompt(stepsJSON)];
             case 2:
                 userOutput = _a.sent();
-                return [2 /*return*/, __assign({ engineType: engineType }, userOutput)];
+                return [2 /*return*/, __assign({ templateEngine: templateEngine }, userOutput)];
         }
     });
 }); };

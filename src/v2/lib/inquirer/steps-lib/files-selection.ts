@@ -2,21 +2,19 @@ import { InputQuestion } from 'inquirer';
 import { InquirerStepConfig, InquirerStepPartialConfig } from '../types.js';
 import { getExtensionsConfig } from '../../processor/files.js';
 
-const getFilesSelectionStepChoices = (props: {
+const getFilesSelectionStepChoices = (engine: {
   templateEngine: string;
 }): InputQuestion => {
-  const extensionsList = getExtensionsConfig(props.templateEngine);
+  const extensionsList = getExtensionsConfig({engine});
 
   // looping through the extensionsConfig object and returning an array of objects
-  const items = Object.values(extensionsList).map((extension: any) => {
+  return Object.values(extensionsList).map((extension: any) => {
     return {
       name: extension.label,
       value: extension.type,
       checked: extension.defaultEnabled,
     };
   });
-
-  return items;
 };
 
 const filesSelectionStepConfig: InquirerStepPartialConfig = {
@@ -34,6 +32,6 @@ const filesSelectionStepConfig: InquirerStepPartialConfig = {
 export const fileSelectionStep = (props: any): InquirerStepConfig => {
   return {
     ...filesSelectionStepConfig,
-    choices: getFilesSelectionStepChoices(props.engineType),
+    choices: getFilesSelectionStepChoices(props.templateEngine),
   };
 };

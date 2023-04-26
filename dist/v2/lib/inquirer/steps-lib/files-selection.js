@@ -10,8 +10,8 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 import { getExtensionsConfig } from '../../processor/files.js';
-var getFilesSelectionStepChoices = function (props) {
-    var extensionsList = getExtensionsConfig(props.templateEngine);
+var getFilesSelectionStepChoices = function (engine) {
+    var extensionsList = getExtensionsConfig({ engine: engine });
     // looping through the extensionsConfig object and returning an array of objects
     var items = Object.values(extensionsList).map(function (extension) {
         return {
@@ -34,6 +34,6 @@ var filesSelectionStepConfig = {
     }
 };
 export var fileSelectionStep = function (props) {
-    return __assign(__assign({}, filesSelectionStepConfig), { choices: getFilesSelectionStepChoices(props.engineType) });
+    return __assign(__assign({}, filesSelectionStepConfig), { choices: getFilesSelectionStepChoices(props.templateEngine) });
 };
 //# sourceMappingURL=files-selection.js.map
