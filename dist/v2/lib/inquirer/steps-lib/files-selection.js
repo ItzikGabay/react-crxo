@@ -13,14 +13,13 @@ import { getExtensionsConfig } from '../../processor/files.js';
 var getFilesSelectionStepChoices = function (engine) {
     var extensionsList = getExtensionsConfig({ engine: engine });
     // looping through the extensionsConfig object and returning an array of objects
-    var items = Object.values(extensionsList).map(function (extension) {
+    return Object.values(extensionsList).map(function (extension) {
         return {
             name: extension.label,
-            value: extension.type,
+            value: extension,
             checked: extension.defaultEnabled,
         };
     });
-    return items;
 };
 var filesSelectionStepConfig = {
     name: 'filesTypes',

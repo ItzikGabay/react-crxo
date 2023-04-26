@@ -11,11 +11,11 @@ function isFolderHidden(pathStr: any) {
 }
 
 const createLocationStepConfig: any = {
-    name: 'stepTemplate',
+    name: 'outputDirectory',
     message: 'This is a step template',
     type: 'file-tree-selection',
     onlyShowDir: true,
-    enableGoUpperDirectory: true,
+    enableGoUpperDirectory: false,
     onlyShowValid: true,
     validate: (input: any) => {
         return !isFolderHidden(input);

@@ -1,67 +1,87 @@
 export const getExtensionsConfig = ({ engine }: any) => {
   return {
-    folder: {
+    [availableExtensions.folder]: {
       type: 'folder',
       label: 'folder',
-      extensions: 'folder',
       defaultEnabled: true,
       endingWithEngineType: false,
+      extension: 'folder',
     },
-    javascript: {
-      label: engine,
-      type: engine,
-      extension: engine,
+    [availableExtensions.index]: {
+      type: 'index',
+      label: 'index file',
+      defaultEnabled: true,
+      endingWithEngineType: true,
+      extension: 'index',
+    },
+    [availableExtensions.baseModule]: {
+      type: 'base-module',
+      label: `base module (${engine})`,
       defaultEnabled: false,
       endingWithEngineType: true,
+      extension: engine,
     },
-    react: {
+    [availableExtensions.react]: {
       type: 'react',
       label: `react component (${engine}x)`,
-      extension: `${engine}x`,
       defaultEnabled: true,
       endingWithEngineType: false,
+      extension: `${engine}x`,
     },
-    css: {
+    [availableExtensions.css]: {
       type: 'css',
       label: 'css',
-      extension: 'css',
       defaultEnabled: false,
       endingWithEngineType: false,
+      extension: 'css',
     },
-    cssModule: {
+    [availableExtensions.cssModule]: {
       type: 'css-module',
       label: 'css-module',
-      extension: 'module.css',
       defaultEnabled: false,
       endingWithEngineType: false,
+      extension: 'module.css',
     },
-    scssModule: {
+    [availableExtensions.scssModule]: {
       type: 'scss-module',
       label: 'scss-module',
-      extension: 'module.scss',
       defaultEnabled: false,
       endingWithEngineType: false,
+      extension: 'module.scss',
     },
-    controller: {
+    [availableExtensions.controller]: {
       type: 'controller',
       label: 'controller',
-      extension: 'controller',
       defaultEnabled: false,
       endingWithEngineType: true,
+      extension: 'controller',
     },
-    utils: {
+    [availableExtensions.utils]: {
       type: 'utils',
       label: 'utils',
-      extension: 'utils',
       defaultEnabled: false,
       endingWithEngineType: true,
+      extension: 'utils',
     },
-    types: {
+    [availableExtensions.types]: {
       type: 'types',
       label: 'types',
-      extension: 'types',
       defaultEnabled: false,
       endingWithEngineType: true,
+      extension: 'types',
     },
   };
 };
+
+export enum availableExtensions {
+    folder = 'folder',
+    index = 'index',
+    baseModule = 'base-module',
+    react = 'react',
+    css = 'css',
+    cssModule = 'css-module',
+    scssModule = 'scss-module',
+    controller = 'controller',
+    utils = 'utils',
+    types = 'types',
+}

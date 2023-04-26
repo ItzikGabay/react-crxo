@@ -1,69 +1,90 @@
 export var getExtensionsConfig = function (_a) {
+    var _b;
     var engine = _a.engine;
-    return {
-        folder: {
+    return _b = {},
+        _b[availableExtensions.folder] = {
             type: 'folder',
             label: 'folder',
-            extensions: 'folder',
             defaultEnabled: true,
             endingWithEngineType: false,
+            extension: 'folder',
         },
-        javascript: {
-            label: engine,
-            type: engine,
-            extension: engine,
+        _b[availableExtensions.index] = {
+            type: 'index',
+            label: 'index file',
+            defaultEnabled: true,
+            endingWithEngineType: true,
+            extension: 'index',
+        },
+        _b[availableExtensions.baseModule] = {
+            type: 'base-module',
+            label: "base module (".concat(engine, ")"),
             defaultEnabled: false,
             endingWithEngineType: true,
+            extension: engine,
         },
-        react: {
+        _b[availableExtensions.react] = {
             type: 'react',
             label: "react component (".concat(engine, "x)"),
-            extension: "".concat(engine, "x"),
             defaultEnabled: true,
             endingWithEngineType: false,
+            extension: "".concat(engine, "x"),
         },
-        css: {
+        _b[availableExtensions.css] = {
             type: 'css',
             label: 'css',
-            extension: 'css',
             defaultEnabled: false,
             endingWithEngineType: false,
+            extension: 'css',
         },
-        cssModule: {
+        _b[availableExtensions.cssModule] = {
             type: 'css-module',
             label: 'css-module',
-            extension: 'module.css',
             defaultEnabled: false,
             endingWithEngineType: false,
+            extension: 'module.css',
         },
-        scssModule: {
+        _b[availableExtensions.scssModule] = {
             type: 'scss-module',
             label: 'scss-module',
-            extension: 'module.scss',
             defaultEnabled: false,
             endingWithEngineType: false,
+            extension: 'module.scss',
         },
-        controller: {
+        _b[availableExtensions.controller] = {
             type: 'controller',
             label: 'controller',
-            extension: 'controller',
             defaultEnabled: false,
             endingWithEngineType: true,
+            extension: 'controller',
         },
-        utils: {
+        _b[availableExtensions.utils] = {
             type: 'utils',
             label: 'utils',
-            extension: 'utils',
             defaultEnabled: false,
             endingWithEngineType: true,
+            extension: 'utils',
         },
-        types: {
+        _b[availableExtensions.types] = {
             type: 'types',
             label: 'types',
-            extension: 'types',
             defaultEnabled: false,
             endingWithEngineType: true,
+            extension: 'types',
         },
-    };
+        _b;
 };
+export var availableExtensions;
+(function (availableExtensions) {
+    availableExtensions["folder"] = "folder";
+    availableExtensions["index"] = "index";
+    availableExtensions["baseModule"] = "base-module";
+    availableExtensions["react"] = "react";
+    availableExtensions["css"] = "css";
+    availableExtensions["cssModule"] = "css-module";
+    availableExtensions["scssModule"] = "scss-module";
+    availableExtensions["controller"] = "controller";
+    availableExtensions["utils"] = "utils";
+    availableExtensions["types"] = "types";
+})(availableExtensions || (availableExtensions = {}));
 //# sourceMappingURL=files.js.map

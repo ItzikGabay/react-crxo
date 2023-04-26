@@ -11,7 +11,7 @@ const getFilesSelectionStepChoices = (engine: {
   return Object.values(extensionsList).map((extension: any) => {
     return {
       name: extension.label,
-      value: extension.type,
+      value: extension,
       checked: extension.defaultEnabled,
     };
   });

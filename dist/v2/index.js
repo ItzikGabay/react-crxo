@@ -48,7 +48,10 @@ var init = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 1:
                 userOutput = _a.sent();
                 // processing the output by generated object
-                processOutput(userOutput, currentMode, {});
+                return [4 /*yield*/, processOutput(userOutput, currentMode, {})];
+            case 2:
+                // processing the output by generated object
+                _a.sent();
                 return [2 /*return*/];
         }
     });

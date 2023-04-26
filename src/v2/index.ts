@@ -6,7 +6,6 @@ import {
   modesRefrence,
 } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
-import { getEngineType } from './lib/inquirer/process.js';
 
 const init = async () => {
   const [mode] = inputArgumnets;
@@ -18,7 +17,7 @@ const init = async () => {
   const userOutput: any = await currentMode.input();
 
   // processing the output by generated object
-  processOutput(userOutput, currentMode, {});
+  await processOutput(userOutput, currentMode, {});
 };
 
 init();
