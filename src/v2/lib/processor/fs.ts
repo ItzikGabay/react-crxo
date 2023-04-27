@@ -12,13 +12,22 @@ export class FilesService {
     return fs.promises.mkdir(this.getPath);
   }
 
-  public createExtensionFile(content: string = null) {
-    console.log(`Generating ${this.file.extension} file into ${this.getFullPath}`);
+  public createExtensionFile(content: string = '') {
+    console.log(`Generating ${this.file.extension}..`);
     return fs.promises.writeFile(this.getFullPath, content);
   }
 
+  private get isFolderOptionSelected() {
+    return this.config.filesTypes.some((fileType: any) => fileType.type === 'folder');
+  }
+
   private get getPath() {
-    return this.config.outputDirectory;
+    // in case they want to create files locally
+    if(!this.isFolderOptionSelected) {
+        return this.config.outputDirectory;
+    }
+
+    return `${this.config.outputDirectory}/${this.getComponentName}`;
   }
 
   private get getComponentName() {
