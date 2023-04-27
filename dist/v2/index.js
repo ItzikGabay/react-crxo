@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { inputArgumnets, modesConfig, modesRefrence, } from './lib/common/modes.js';
+import { inputArgumnets, modesConfig, modesReference, } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
 var init = function () { return __awaiter(void 0, void 0, void 0, function () {
     var mode, currentMode, userOutput;
@@ -43,7 +43,7 @@ var init = function () { return __awaiter(void 0, void 0, void 0, function () {
         switch (_a.label) {
             case 0:
                 mode = inputArgumnets[0];
-                currentMode = modesRefrence[mode] || modesConfig.interactive;
+                currentMode = modesReference[mode] || modesConfig.interactive;
                 return [4 /*yield*/, currentMode.input()];
             case 1:
                 userOutput = _a.sent();

@@ -34,14 +34,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { createDirectory } from "./fs.js";
-import { availableExtensions, getExtensionsConfig } from "./files.js";
+import { FilesService } from "./fs.js";
+import { availableExtensions } from "./files.js";
 export var processOutput = function (output, modeRef, options) { return __awaiter(void 0, void 0, void 0, function () {
     var _i, _a, file;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                console.debug('[debug] ->', { output: output, modeRef: modeRef, options: options });
                 _i = 0, _a = output.filesTypes;
                 _b.label = 1;
             case 1:
@@ -59,29 +58,22 @@ export var processOutput = function (output, modeRef, options) { return __awaite
     });
 }); };
 var processFile = function (file, config) { return __awaiter(void 0, void 0, void 0, function () {
-    var extConfig, _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                extConfig = getExtensionsConfig(config.templateEngine);
-                _a = file.type;
-                switch (_a) {
-                    case availableExtensions.folder: return [3 /*break*/, 1];
-                    case availableExtensions.react: return [3 /*break*/, 3];
-                }
-                return [3 /*break*/, 4];
-            case 1: return [4 /*yield*/, createDirectory("".concat(config.outputDirectory, "/").concat(config.componentName))];
-            case 2:
-                _b.sent();
-                return [3 /*break*/, 5];
-            case 3:
-                console.debug('SOON - react', { file: file });
-                return [3 /*break*/, 5];
-            case 4:
-                console.debug('SOON - default', { file: file });
-                return [3 /*break*/, 5];
-            case 5: return [2 /*return*/];
+    var filesService;
+    return __generator(this, function (_a) {
+        filesService = new FilesService(file, config);
+        switch (file.type) {
+            case availableExtensions.folder:
+                // await filesService.createDirectory()
+                break;
+            case availableExtensions.react:
+                // putting content inside the component
+                filesService.createExtensionFile();
+                break;
+            default:
+                filesService.createExtensionFile();
+                break;
         }
+        return [2 /*return*/];
     });
 }); };
 //# sourceMappingURL=processor.js.map

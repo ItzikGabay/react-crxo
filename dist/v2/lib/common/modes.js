@@ -37,7 +37,7 @@ export var modesConfig = {
 };
 // In order to match the input argument with the mode,
 // we need to have a reference to the modes.
-export var modesRefrence = (_a = {},
+export var modesReference = (_a = {},
     _a[availableModes.silent] = modesConfig.silent,
     _a[availableModes.interactive] = modesConfig.interactive,
     _a[availableModes.test] = modesConfig.test,

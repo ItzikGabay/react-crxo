@@ -7,6 +7,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'folder',
             defaultEnabled: true,
             endingWithEngineType: false,
+            hasComponentName: true,
             extension: 'folder',
         },
         _b[availableExtensions.index] = {
@@ -14,13 +15,15 @@ export var getExtensionsConfig = function (_a) {
             label: 'index file',
             defaultEnabled: true,
             endingWithEngineType: true,
+            hasComponentName: false,
             extension: 'index',
         },
         _b[availableExtensions.baseModule] = {
             type: 'base-module',
             label: "base module (".concat(engine, ")"),
             defaultEnabled: false,
-            endingWithEngineType: true,
+            endingWithEngineType: false,
+            hasComponentName: true,
             extension: engine,
         },
         _b[availableExtensions.react] = {
@@ -28,6 +31,7 @@ export var getExtensionsConfig = function (_a) {
             label: "react component (".concat(engine, "x)"),
             defaultEnabled: true,
             endingWithEngineType: false,
+            hasComponentName: true,
             extension: "".concat(engine, "x"),
         },
         _b[availableExtensions.css] = {
@@ -35,6 +39,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'css',
             defaultEnabled: false,
             endingWithEngineType: false,
+            hasComponentName: true,
             extension: 'css',
         },
         _b[availableExtensions.cssModule] = {
@@ -42,6 +47,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'css-module',
             defaultEnabled: false,
             endingWithEngineType: false,
+            hasComponentName: true,
             extension: 'module.css',
         },
         _b[availableExtensions.scssModule] = {
@@ -49,6 +55,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'scss-module',
             defaultEnabled: false,
             endingWithEngineType: false,
+            hasComponentName: true,
             extension: 'module.scss',
         },
         _b[availableExtensions.controller] = {
@@ -56,6 +63,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'controller',
             defaultEnabled: false,
             endingWithEngineType: true,
+            hasComponentName: true,
             extension: 'controller',
         },
         _b[availableExtensions.utils] = {
@@ -63,6 +71,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'utils',
             defaultEnabled: false,
             endingWithEngineType: true,
+            hasComponentName: true,
             extension: 'utils',
         },
         _b[availableExtensions.types] = {
@@ -70,6 +79,7 @@ export var getExtensionsConfig = function (_a) {
             label: 'types',
             defaultEnabled: false,
             endingWithEngineType: true,
+            hasComponentName: true,
             extension: 'types',
         },
         _b;

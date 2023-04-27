@@ -1,8 +1,8 @@
-import {createDirectory} from "./fs.js";
-import {availableExtensions, getExtensionsConfig} from "./files.js";
+import {FilesService} from "./fs.js";
+import {availableExtensions} from "./files.js";
 
 export const processOutput = async (output: any, modeRef: any, options: any) => {
-  console.debug('[debug] ->', { output, modeRef, options });
+  // console.debug('[debug] ->', { output, modeRef, options });
 
   for (const file of output.filesTypes) {
       await processFile(file, output);
@@ -12,15 +12,18 @@ export const processOutput = async (output: any, modeRef: any, options: any) => 
 };
 
 const processFile = async (file: any, config: any) => {
+    const filesService = new FilesService(file, config);
+
+    // cases for putting content in files, all the rest handled dynamically
     switch (file.type) {
         case availableExtensions.folder:
-            await createDirectory(`${config.outputDirectory}/${config.componentName}`);
+            await filesService.createDirectory()
             break;
         case availableExtensions.react:
-            console.debug('SOON - react', { file });
+            await filesService.createExtensionFile()
             break;
         default:
-            console.debug('SOON - default', { file });
+            await filesService.createExtensionFile()
             break;
     }
 }

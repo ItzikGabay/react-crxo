@@ -3,10 +3,10 @@ import { getUserFilesSpecifications } from '../inquirer/process.js';
 export const inputArgumnets = process.argv.slice(2);
 
 const availableModes = {
-  silent: '-s',
-  interactive: '-i',
-  test: '-t',
-};
+    silent: '-s',
+    interactive: '-i',
+    test: '-t',
+}
 
 export const modesConfig = {
   silent: {
@@ -40,8 +40,9 @@ export const modesConfig = {
 
 // In order to match the input argument with the mode,
 // we need to have a reference to the modes.
-export const modesRefrence = {
+export const modesReference = {
   [availableModes.silent]: modesConfig.silent,
   [availableModes.interactive]: modesConfig.interactive,
   [availableModes.test]: modesConfig.test,
 };
+

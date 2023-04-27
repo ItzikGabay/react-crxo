@@ -5,6 +5,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'folder',
       defaultEnabled: true,
       endingWithEngineType: false,
+      hasComponentName: true,
       extension: 'folder',
     },
     [availableExtensions.index]: {
@@ -12,13 +13,15 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'index file',
       defaultEnabled: true,
       endingWithEngineType: true,
+      hasComponentName: false,
       extension: 'index',
     },
     [availableExtensions.baseModule]: {
       type: 'base-module',
       label: `base module (${engine})`,
       defaultEnabled: false,
-      endingWithEngineType: true,
+      endingWithEngineType: false,
+      hasComponentName: true,
       extension: engine,
     },
     [availableExtensions.react]: {
@@ -26,6 +29,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: `react component (${engine}x)`,
       defaultEnabled: true,
       endingWithEngineType: false,
+      hasComponentName: true,
       extension: `${engine}x`,
     },
     [availableExtensions.css]: {
@@ -33,6 +37,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'css',
       defaultEnabled: false,
       endingWithEngineType: false,
+      hasComponentName: true,
       extension: 'css',
     },
     [availableExtensions.cssModule]: {
@@ -40,6 +45,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'css-module',
       defaultEnabled: false,
       endingWithEngineType: false,
+      hasComponentName: true,
       extension: 'module.css',
     },
     [availableExtensions.scssModule]: {
@@ -47,6 +53,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'scss-module',
       defaultEnabled: false,
       endingWithEngineType: false,
+      hasComponentName: true,
       extension: 'module.scss',
     },
     [availableExtensions.controller]: {
@@ -54,6 +61,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'controller',
       defaultEnabled: false,
       endingWithEngineType: true,
+      hasComponentName: true,
       extension: 'controller',
     },
     [availableExtensions.utils]: {
@@ -61,6 +69,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'utils',
       defaultEnabled: false,
       endingWithEngineType: true,
+      hasComponentName: true,
       extension: 'utils',
     },
     [availableExtensions.types]: {
@@ -68,6 +77,7 @@ export const getExtensionsConfig = ({ engine }: any) => {
       label: 'types',
       defaultEnabled: false,
       endingWithEngineType: true,
+      hasComponentName: true,
       extension: 'types',
     },
   };
