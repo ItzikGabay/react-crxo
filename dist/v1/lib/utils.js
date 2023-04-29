@@ -47,4 +47,3 @@ export function extractComponentPaths(componentName, userInputPath) {
         cnWithCssSupport: cnWithCssSupport,
     };
 }
-//# sourceMappingURL=utils.js.map

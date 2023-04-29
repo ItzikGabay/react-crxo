@@ -24,4 +24,3 @@ export function cleanPath(_path) {
     }
     return _path;
 }
-//# sourceMappingURL=string.js.map

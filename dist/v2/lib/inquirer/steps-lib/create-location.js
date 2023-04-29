@@ -31,4 +31,3 @@ var createLocationStepConfig = {
 export var createLocationStep = function () {
     return __assign({}, createLocationStepConfig);
 };
-//# sourceMappingURL=create-location.js.map

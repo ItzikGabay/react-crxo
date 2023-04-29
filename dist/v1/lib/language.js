@@ -25,4 +25,3 @@ export var questions = Object.freeze({
     QUESTION_CONVENTION_SNAKE: 'component_name',
 });
 export default language;
-//# sourceMappingURL=language.js.map

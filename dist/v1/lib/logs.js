@@ -23,4 +23,3 @@ export var successLog = function (output) {
 export var warnUser = function (message) {
     consoleUser('red', message);
 };
-//# sourceMappingURL=logs.js.map

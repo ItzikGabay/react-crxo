@@ -14,7 +14,10 @@ export class FilesService {
 
   public createExtensionFile(content: string = '') {
     console.log(`Generating ${this.file.extension}..`);
-    return fs.promises.writeFile(this.getFullPath, content);
+    if(this.file.extension === 'folder') {
+        return this.createDirectory();
+    }
+    return fs.promises.writeFile(this.getFullPath, content, 'utf8');
   }
 
   private get isFolderOptionSelected() {
@@ -27,7 +30,7 @@ export class FilesService {
         return this.config.outputDirectory;
     }
 
-    return `${this.config.outputDirectory}/${this.getComponentName}`;
+    return `${this.config.outputDirectory}/${this.config.componentName}`;
   }
 
   private get getComponentName() {

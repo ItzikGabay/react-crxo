@@ -2,7 +2,6 @@ import { JsEngineStep } from './steps-lib/js-engine-step.js';
 import { fileSelectionStep } from './steps-lib/files-selection.js';
 import { componentNameStep } from './steps-lib/component-name.js';
 import { templateTypeStep } from './steps-lib/template-type.js';
-import { nameConventionStep } from './steps-lib/name-convention.js';
 import { createLocationStep } from "./steps-lib/create-location.js";
 export var engineTypeStep = {
     STEP_1: JsEngineStep,
@@ -11,8 +10,8 @@ export var inquirerSteps = {
     STEP_1: componentNameStep,
     STEP_2: fileSelectionStep,
     STEP_3: templateTypeStep,
-    STEP_4: nameConventionStep,
-    STEP_5: createLocationStep,
+    STEP_4: createLocationStep,
+    // STEP_5: nameConventionStep - disabled for now
 };
 export var generateInquirerSteps = function (stepsObj, props) {
     if (props === void 0) { props = {}; }
@@ -21,4 +20,3 @@ export var generateInquirerSteps = function (stepsObj, props) {
     Object.values(stepsObj).forEach(function (step) { return steps.push(step(props)); });
     return steps;
 };
-//# sourceMappingURL=steps.js.map

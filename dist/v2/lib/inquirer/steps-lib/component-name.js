@@ -23,4 +23,3 @@ var componentNameStepConfig = {
 export var componentNameStep = function () {
     return __assign({}, componentNameStepConfig);
 };
-//# sourceMappingURL=component-name.js.map

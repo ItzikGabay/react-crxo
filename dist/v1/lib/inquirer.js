@@ -85,4 +85,3 @@ export var componentPrompt = function () {
     var fields = _generateInquirerFields();
     return inquirer.prompt(fields);
 };
-//# sourceMappingURL=inquirer.js.map

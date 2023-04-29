@@ -15,4 +15,3 @@ export var validateComponentName = function (name) {
     }
     return true;
 };
-//# sourceMappingURL=validation.js.map

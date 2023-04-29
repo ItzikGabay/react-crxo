@@ -7,4 +7,3 @@ export var JSXtemplate = function (name, uppercased, cssType, templateType) {
 export var CSStemplate = function () {
     return ".container {\n    color: red;\n    font-size: 40px;\n}";
 };
-//# sourceMappingURL=template.js.map

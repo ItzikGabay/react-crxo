@@ -34,4 +34,3 @@ export var templateStep = function () {
 // TODO: Think about how to make this more dynamic in the future:
 // Maybe a function that returns an the end result object
 // or even a to use class instead with extending base templating or injected-with-data templates classes
-//# sourceMappingURL=template-step.js.map

@@ -34,4 +34,3 @@ var nameConventionConfig = {
 export var nameConventionStep = function () {
     return __assign(__assign({}, nameConventionConfig), { choices: getNameConventionChoices() });
 };
-//# sourceMappingURL=name-convention.js.map

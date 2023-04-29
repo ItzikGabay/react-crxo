@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { FilesService } from "./fs.js";
-import { availableExtensions } from "./files.js";
+import { createTemplate } from "./templating.js";
 export var processOutput = function (output, modeRef, options) { return __awaiter(void 0, void 0, void 0, function () {
     var _i, _a, file;
     return __generator(this, function (_b) {
@@ -58,31 +58,16 @@ export var processOutput = function (output, modeRef, options) { return __awaite
     });
 }); };
 var processFile = function (file, config) { return __awaiter(void 0, void 0, void 0, function () {
-    var filesService, _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
+    var filesService, stringTemplate;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
             case 0:
                 filesService = new FilesService(file, config);
-                _a = file.type;
-                switch (_a) {
-                    case availableExtensions.folder: return [3 /*break*/, 1];
-                    case availableExtensions.react: return [3 /*break*/, 3];
-                }
-                return [3 /*break*/, 5];
-            case 1: return [4 /*yield*/, filesService.createDirectory()];
-            case 2:
-                _b.sent();
-                return [3 /*break*/, 7];
-            case 3: return [4 /*yield*/, filesService.createExtensionFile()];
-            case 4:
-                _b.sent();
-                return [3 /*break*/, 7];
-            case 5: return [4 /*yield*/, filesService.createExtensionFile()];
-            case 6:
-                _b.sent();
-                return [3 /*break*/, 7];
-            case 7: return [2 /*return*/];
+                stringTemplate = createTemplate(file, config);
+                return [4 /*yield*/, filesService.createExtensionFile(stringTemplate)];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
         }
     });
 }); };
-//# sourceMappingURL=processor.js.map

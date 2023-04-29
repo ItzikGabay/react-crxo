@@ -35,4 +35,3 @@ var filesSelectionStepConfig = {
 export var fileSelectionStep = function (props) {
     return __assign(__assign({}, filesSelectionStepConfig), { choices: getFilesSelectionStepChoices(props.templateEngine) });
 };
-//# sourceMappingURL=files-selection.js.map

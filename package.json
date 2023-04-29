@@ -2,7 +2,7 @@
   "name": "crxo",
   "version": "1.2.8",
   "description": "Helping you creating new react component trough interactive CLI.",
-  "main": "dist/v1/app.js",
+  "main": "dist/v2/index.js",
   "type": "module",
   "directories": {
     "lib": "dist/v2/lib"

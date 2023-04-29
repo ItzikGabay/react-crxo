@@ -34,4 +34,3 @@ var TemplateTypeStepConfig = {
 export var templateTypeStep = function () {
     return __assign(__assign({}, TemplateTypeStepConfig), { choices: getTemplateTypeStepChoices() });
 };
-//# sourceMappingURL=template-type.js.map

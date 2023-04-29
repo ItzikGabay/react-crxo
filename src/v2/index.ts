@@ -6,7 +6,7 @@ import {
 } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
 
-const init = async () => {
+(async () => {
   const [mode] = inputArgumnets;
 
   // in case there is no mode, use the default mode
@@ -17,6 +17,4 @@ const init = async () => {
 
   // processing the output by generated object
   await processOutput(userOutput, currentMode, {});
-};
-
-init();
+})();

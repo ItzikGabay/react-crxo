@@ -12,4 +12,3 @@ export var consoleAppUsage = function (exitApp) {
         process.exit(1);
     }
 };
-//# sourceMappingURL=modes.utils.js.map

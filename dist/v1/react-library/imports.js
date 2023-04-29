@@ -18,4 +18,3 @@ export function addTemplateHooks(templateType) {
     }
     return hooksValue;
 }
-//# sourceMappingURL=imports.js.map

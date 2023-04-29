@@ -42,4 +42,3 @@ export var modesReference = (_a = {},
     _a[availableModes.interactive] = modesConfig.interactive,
     _a[availableModes.test] = modesConfig.test,
     _a);
-//# sourceMappingURL=modes.js.map

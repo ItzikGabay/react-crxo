@@ -45,4 +45,3 @@ export function createFiles(name, filesToCreate, componentTemplate, nameConventi
     }
     console.log("Component '".concat(cmpPaths.name, "' generated at '").concat(cmpPaths.folder, "'"));
 }
-//# sourceMappingURL=fs.js.map

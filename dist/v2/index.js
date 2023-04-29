@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 import { inputArgumnets, modesConfig, modesReference, } from './lib/common/modes.js';
 import { processOutput } from './lib/processor/processor.js';
-var init = function () { return __awaiter(void 0, void 0, void 0, function () {
+(function () { return __awaiter(void 0, void 0, void 0, function () {
     var mode, currentMode, userOutput;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -55,6 +55,4 @@ var init = function () { return __awaiter(void 0, void 0, void 0, function () {
                 return [2 /*return*/];
         }
     });
-}); };
-init();
-//# sourceMappingURL=index.js.map
+}); })();

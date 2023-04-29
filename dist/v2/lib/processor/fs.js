@@ -9,8 +9,11 @@ var FilesService = /** @class */ (function () {
     };
     FilesService.prototype.createExtensionFile = function (content) {
         if (content === void 0) { content = ''; }
-        console.log("Generating ".concat(this.file.extension, ".."), this.getFullPath);
-        // return fs.promises.writeFile(this.getFullPath, content);
+        console.log("Generating ".concat(this.file.extension, ".."));
+        if (this.file.extension === 'folder') {
+            return this.createDirectory();
+        }
+        return fs.promises.writeFile(this.getFullPath, content, 'utf8');
     };
     Object.defineProperty(FilesService.prototype, "isFolderOptionSelected", {
         get: function () {
@@ -25,7 +28,7 @@ var FilesService = /** @class */ (function () {
             if (!this.isFolderOptionSelected) {
                 return this.config.outputDirectory;
             }
-            return "".concat(this.config.outputDirectory, "/").concat(this.getComponentName);
+            return "".concat(this.config.outputDirectory, "/").concat(this.config.componentName);
         },
         enumerable: false,
         configurable: true
@@ -66,4 +69,3 @@ var FilesService = /** @class */ (function () {
     return FilesService;
 }());
 export { FilesService };
-//# sourceMappingURL=fs.js.map
