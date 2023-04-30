@@ -4,7 +4,7 @@ const componentNameStepConfig: InquirerStepPartialConfig = {
   name: 'componentName',
   message: 'What is the name of the component?',
   type: 'input',
-  validate: (answer: any) => {
+  validate: (answer: string) => {
     if (answer.length < 1) {
       return 'You must enter a name.';
     }

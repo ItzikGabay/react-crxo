@@ -1,6 +1,6 @@
 import { modesConfig } from './modes.js';
 
-export const consoleAppUsage = (exitApp = true) => {
+export const consoleAppUsage = (exitApp: boolean = true): void => {
   console.log('Wrong usage. Please make sure you provided mode correctly.');
   Object.values(modesConfig).forEach(mode => {
     if (mode.openToUsers) {

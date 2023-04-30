@@ -1,9 +1,10 @@
 import * as fs from 'fs';
+import {InquirerFileType, InquirerOutput} from "../inquirer/types";
 
 export class FilesService {
-  private config: any;
-  private file: any;
-  constructor(file: any, config: any) {
+  private config: InquirerOutput;
+  private file: InquirerFileType;
+  constructor(file: InquirerFileType, config: InquirerOutput) {
     this.file = file;
     this.config = config;
   }
@@ -21,7 +22,7 @@ export class FilesService {
   }
 
   private get isFolderOptionSelected() {
-    return this.config.filesTypes.some((fileType: any) => fileType.type === 'folder');
+    return this.config.filesTypes.some((fileType: InquirerFileType) => fileType.type === 'folder');
   }
 
   private get getPath() {

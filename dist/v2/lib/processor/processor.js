@@ -34,37 +34,44 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-import { FilesService } from "./fs.js";
-import { createTemplate } from "./templating.js";
-export var processOutput = function (output, modeRef, options) { return __awaiter(void 0, void 0, void 0, function () {
-    var _i, _a, file;
+import { FilesService } from './fs.js';
+import { createTemplate } from './templating.js';
+export var processOutput = function (output) { return __awaiter(void 0, void 0, void 0, function () {
+    var _i, _a, file, e_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _i = 0, _a = output.filesTypes;
                 _b.label = 1;
             case 1:
-                if (!(_i < _a.length)) return [3 /*break*/, 4];
+                if (!(_i < _a.length)) return [3 /*break*/, 6];
                 file = _a[_i];
-                return [4 /*yield*/, processFile(file, output)];
+                _b.label = 2;
             case 2:
-                _b.sent();
-                _b.label = 3;
+                _b.trys.push([2, 4, , 5]);
+                return [4 /*yield*/, processFile(file, output)];
             case 3:
+                _b.sent();
+                return [3 /*break*/, 5];
+            case 4:
+                e_1 = _b.sent();
+                console.error(e_1);
+                return [2 /*return*/, false];
+            case 5:
                 _i++;
                 return [3 /*break*/, 1];
-            case 4: return [2 /*return*/, true];
+            case 6: return [2 /*return*/, true];
         }
     });
 }); };
 var processFile = function (file, config) { return __awaiter(void 0, void 0, void 0, function () {
-    var filesService, stringTemplate;
+    var filesService, templateByExtensionType;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 filesService = new FilesService(file, config);
-                stringTemplate = createTemplate(file, config);
-                return [4 /*yield*/, filesService.createExtensionFile(stringTemplate)];
+                templateByExtensionType = createTemplate(file, config);
+                return [4 /*yield*/, filesService.createExtensionFile(templateByExtensionType)];
             case 1:
                 _a.sent();
                 return [2 /*return*/];

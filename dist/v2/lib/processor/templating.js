@@ -10,7 +10,7 @@ var ReactTemplating = /** @class */ (function () {
         this.config = config;
     }
     ReactTemplating.prototype.convertToPascalCase = function (name) {
-        // we splitting by '' to get each letter as a separate item in the array
+        // we're splitting by '' to get each letter as a separate item in the array
         // then we capitalize the first letter of each item
         // then we join the array back to a string
         return name
@@ -103,8 +103,7 @@ var ReactTemplating = /** @class */ (function () {
     return ReactTemplating;
 }());
 var CSSTemplating = /** @class */ (function () {
-    function CSSTemplating(name) {
-        this.name = name;
+    function CSSTemplating() {
     }
     CSSTemplating.prototype.addCSS = function () {
         return ('.container {\n' +
@@ -131,7 +130,7 @@ var IndexTemplating = /** @class */ (function () {
 }());
 export var createTemplate = function (file, config) {
     var reactComponent = new ReactTemplating(config);
-    var css = new CSSTemplating(config.componentName);
+    var css = new CSSTemplating();
     switch (file.type) {
         case availableExtensions.react:
             return reactComponent.createReactComponent();

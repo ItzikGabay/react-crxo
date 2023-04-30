@@ -48,7 +48,7 @@ import { processOutput } from './lib/processor/processor.js';
             case 1:
                 userOutput = _a.sent();
                 // processing the output by generated object
-                return [4 /*yield*/, processOutput(userOutput, currentMode, {})];
+                return [4 /*yield*/, processOutput(userOutput)];
             case 2:
                 // processing the output by generated object
                 _a.sent();

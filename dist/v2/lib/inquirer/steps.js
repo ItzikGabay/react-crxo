@@ -11,7 +11,6 @@ export var inquirerSteps = {
     STEP_2: fileSelectionStep,
     STEP_3: templateTypeStep,
     STEP_4: createLocationStep,
-    // STEP_5: nameConventionStep - disabled for now
 };
 export var generateInquirerSteps = function (stepsObj, props) {
     if (props === void 0) { props = {}; }

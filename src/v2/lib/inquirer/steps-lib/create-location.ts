@@ -17,7 +17,7 @@ const createLocationStepConfig: any = {
     onlyShowDir: true,
     enableGoUpperDirectory: false,
     onlyShowValid: true,
-    validate: (input: any) => {
+    validate: (input: string) => {
         return !isFolderHidden(input);
     }
 };

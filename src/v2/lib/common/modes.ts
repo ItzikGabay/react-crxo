@@ -1,23 +1,21 @@
 import { getUserFilesSpecifications } from '../inquirer/process.js';
+import {AvailableModes, ModesConfig} from "./types";
 
 export const inputArgumnets = process.argv.slice(2);
 
-const availableModes = {
+const availableModes: AvailableModes = {
     silent: '-s',
     interactive: '-i',
     test: '-t',
 }
 
-export const modesConfig = {
+export const modesConfig: ModesConfig = {
   silent: {
     name: 'silent',
     description: 'Silent mode',
     command: availableModes.silent,
     openToUsers: true,
-    input: () => {
-      console.log('Silent mode');
-      return true;
-    },
+    input: getUserFilesSpecifications,
   },
   interactive: {
     name: 'interactive',
@@ -31,10 +29,7 @@ export const modesConfig = {
     description: 'Test mode',
     command: availableModes.test,
     openToUsers: false,
-    input: () => {
-      console.log('Test mode');
-      return true;
-    },
+    input: getUserFilesSpecifications,
   },
 };
 

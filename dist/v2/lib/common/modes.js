@@ -12,10 +12,7 @@ export var modesConfig = {
         description: 'Silent mode',
         command: availableModes.silent,
         openToUsers: true,
-        input: function () {
-            console.log('Silent mode');
-            return true;
-        },
+        input: getUserFilesSpecifications,
     },
     interactive: {
         name: 'interactive',
@@ -29,10 +26,7 @@ export var modesConfig = {
         description: 'Test mode',
         command: availableModes.test,
         openToUsers: false,
-        input: function () {
-            console.log('Test mode');
-            return true;
-        },
+        input: getUserFilesSpecifications,
     },
 };
 // In order to match the input argument with the mode,
