@@ -26,11 +26,11 @@ const init = async () => {
       throw new Error(language.SOMETHING_WRONG_ERR);
     }
 
-    return;
+    return null;
   }
 
   if (isSilentMode) {
-    const fileTypeList = [...appConfig.interactive.defaultOptions]; // copy the array
+    const fileTypeList = [...appConfig.interactive.defaultOptions];
     const extraTypesOptions = appConfig.interactive.extrasOptions;
     let [name, path, ...processArguments] = process.argv.slice(3);
 

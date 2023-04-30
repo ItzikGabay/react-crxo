@@ -2,29 +2,35 @@
   "name": "crxo",
   "version": "1.2.8",
   "description": "Helping you creating new react component trough interactive CLI.",
-  "main": "src/app.js",
+  "main": "dist/v2/index.js",
   "type": "module",
   "directories": {
-    "lib": "src/lib"
+    "lib": "dist/v2/lib"
   },
   "bin": {
-    "start": "src/app.js"
+    "start": "dist/v2/index.js"
   },
   "scripts": {
-    "start": "node src/app.js"
+    "start:v1": "node dist/v2/index.js",
+    "build:v1": "tsc",
+    "start:v2": "tsc && ./dist/v2/index.js"
   },
   "author": "itzikgabay",
   "license": "ISC",
   "dependencies": {
     "commander": "^8.3.0",
-    "inquirer": "^8.2.0"
+    "inquirer": "^8.2.0",
+    "inquirer-file-tree-selection-prompt": "^2.0.5"
   },
   "repository": {
     "url": "https://github.com/ItzikGabay/react-create-component-cli.git"
   },
   "private": false,
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "eslint": "^8.16.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2"
   }
 }
