@@ -1,6 +1,6 @@
 {
   "name": "crxo",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Helping you creating new component files trough interactive CLI.",
   "main": "dist/v2/index.js",
   "type": "module",

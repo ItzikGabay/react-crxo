@@ -1,48 +1,50 @@
 <h1 align="center">🧳 CRXO - Create React Component CLI</h1>
 
-<p align="center">Save huge amount of time by using CLI to create your react components.</p>
-<hr>
+Save huge amount of time by using CLI to create your react components.
 
-<p>Most of the time I worked on personal projects or company projects, I encountered a lot of repetition about the way we're generating our new components.</p>
-<p>So as someone who doesn't like to waste time, I asked myself why not develop some basic CLI to help me with this process?</p>
-<p>And here we are now.
-With this CLI you can produce components exactly as you want, with support for all types of groups such as <code>CSS, SCSS, JS, JSX, Index file, Folder</code>, with ready templates all you have to do is start writing code.</p>
+automate your component creation process and focus on developing high-quality React components for your projects.
 
-<hr>
+---
 
-<h1>Some examples:</h1>
-<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-1.png?raw=true" alt="q1" border="0">
-<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-2.png?raw=true" alt="q2" border="0">
-<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-3.png?raw=true" alt="q3" border="0">
-<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/q-4.png?raw=true" alt="q4" border="0">
-<img src="https://github.com/ItzikGabay/react-crxo/blob/main/examples/f-1.png?raw=true" alt="f1" border="0">
+# About
 
-Or you can view `examples` folder for more examples.
+As a developer, you may find yourself frequently creating new React components for your projects. This process can often be repetitive and time-consuming, particularly when you need to generate files for additional features like utility functions, type definitions, or different styling options.
 
-<h1>How to install this CLI?</h1>
-<p>You can install it locally or globally, or just use it with "npx crxo" command without any installations required.</p>
-<ul>
-<li><b>Global installation</b>: npm i -g crxo / yarn global add crxo</li>
-<li><b>Local installation</b>: npm i crxo --save-dev / yarn add crxo -D</li>
-<li><b>npx (no installation)</b>: npx crxo</li>
-</ul>
+To streamline this process and improve your workflow, I've developed a CLI tool that allows you to quickly generate new React components with a range of customizable options. Our tool supports three different styling options, including CSS, CSS Modules, and SCSS Modules. Additionally, you can choose to generate your components in either JavaScript or TypeScript.
 
-<hr>
+This tool includes built-in support for generating utility functions and type definitions for your components, helping you to work more efficiently and avoid repetitive tasks. You can easily include or exclude these additional files when generating your component.
 
-<h1>how to generate a new react component using our CLI?</h1>
-<p><code>crxo</code> or <code>crxo -i</code> for Interactive mode.</p>
-<p><code>crxo -c [name] [path] [options]</code> or <code>crxo create [name] [path] [options]</code> for Silent mode.</p>
+---
 
+# How to use?
 
-<hr>
-<h1>NPM Publish link</h1>
+To use the tool, simply run the CLI command with the appropriate options. For example, to generate a new React component with CSS styling and TypeScript code, you could run:
+
+---
+
+# Example
+![example-01](./examples/example-01.gif)
+
+you can view `examples` folder for more real files examples.
+
+---
+
+# How to use CRXO?
+
+You can install it locally or globally, or just use it with "npx crxo" command without any installations required.
+
+* Global installation: npm i -g crxo / yarn global add crxo
+* Local installation: npm i crxo --save-dev / yarn add crxo -D
+* npx (no installation): npx crxo
+
+---
+
+### NPM Package
 
 https://www.npmjs.com/package/crxo
 
-<h1>Github Publish link</h1>
+### Contribute
 https://github.com/ItzikGabay/react-create-component-cli
 
-<hr>
-
-<h1>Author</h1>
+### Author:
 <p><a href="https://github.com/ItzikGabay">Itzik Gabay</a></p>
