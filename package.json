@@ -11,8 +11,6 @@
     "start": "dist/v2/index.js"
   },
   "scripts": {
-    "start:v1": "node dist/v2/index.js",
-    "build:v1": "tsc",
     "start:v2": "tsc && ./dist/v2/index.js"
   },
   "author": "itzikgabay",
