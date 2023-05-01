@@ -1,17 +1,17 @@
 {
   "name": "crxo",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Helping you creating new component files trough interactive CLI.",
-  "main": "dist/v2/index.js",
+  "main": "dist/index.js",
   "type": "module",
   "directories": {
-    "lib": "dist/v2/lib"
+    "lib": "dist/lib"
   },
   "bin": {
-    "start": "dist/v2/index.js"
+    "start": "dist/index.js"
   },
   "scripts": {
-    "start:v2": "tsc && ./dist/v2/index.js"
+    "start": "tsc && ./dist/index.js"
   },
   "author": "itzikgabay",
   "license": "ISC",

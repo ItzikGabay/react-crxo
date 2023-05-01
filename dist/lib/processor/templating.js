@@ -73,19 +73,19 @@ var ReactTemplating = /** @class */ (function () {
         configurable: true
     });
     ReactTemplating.prototype.addReactComponentImports = function () {
-        return ("import React from 'react';\n" +
+        return ("import React".concat(this.config.templateType !== availableTemplateTypes.lite ? ', { useState }' : '', " from 'react';\n") +
             (this.getCSSEngineExtension
                 ? "import ".concat(this.hasCSS ? '' : 'styles from ', "'./").concat(this.name, ".").concat(this.getCSSEngineExtension, "';\n") : ''));
     };
-    ReactTemplating.prototype.addReactComponentState = function (templateType) {
-        return templateType !== availableTemplateTypes.lite ? "const [state, setState] = useState();\n\n" : '';
+    ReactTemplating.prototype.addReactComponentState = function () {
+        return this.config.templateType !== availableTemplateTypes.lite ? "const [state, setState] = useState(null);\n\n" : '';
     };
     ReactTemplating.prototype.addReactComponentBody = function () {
         return ("const ".concat(this.getComponentName, " = () => {\n") +
-            this.addReactComponentState(this.config.templateType) +
+            this.addReactComponentState() +
             '   return (\n' +
-            "      <div".concat(this.getDivClassName, ">\n") +
-            '          <h1>${this.name}</h1>\n' +
+            "      <div ".concat(this.getDivClassName, ">\n") +
+            "          <h1>".concat(this.getComponentName, "</h1>\n") +
             '      </div>\n' +
             '     );\n' +
             '};\n');

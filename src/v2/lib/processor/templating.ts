@@ -73,23 +73,23 @@ class ReactTemplating {
 
   private addReactComponentImports() {
     return (
-      "import React from 'react';\n" +
+      `import React${this.config.templateType !== availableTemplateTypes.lite ?', { useState }' : ''} from 'react';\n` +
       (this.getCSSEngineExtension
         ? `import ${this.hasCSS ? '' : 'styles from '}'./${this.name}.${this.getCSSEngineExtension}';\n` : '')
     );
   }
 
-  private addReactComponentState(templateType: string) {
-    return templateType !== availableTemplateTypes.lite ? `const [state, setState] = useState();\n\n` : '';
+  private addReactComponentState() {
+    return this.config.templateType !== availableTemplateTypes.lite ? `const [state, setState] = useState(null);\n\n` : '';
   }
 
   private addReactComponentBody() {
     return (
       `const ${this.getComponentName} = () => {\n` +
-      this.addReactComponentState(this.config.templateType) +
+      this.addReactComponentState() +
       '   return (\n' +
-      `      <div${this.getDivClassName}>\n` +
-      '          <h1>${this.name}</h1>\n' +
+      `      <div ${this.getDivClassName}>\n` +
+      `          <h1>${this.getComponentName}</h1>\n` +
       '      </div>\n' +
       '     );\n' +
       '};\n'
