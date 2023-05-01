@@ -16,12 +16,6 @@ This tool includes built-in support for generating utility functions and type de
 
 ---
 
-# How to use?
-
-To use the tool, simply run the CLI command with the appropriate options. For example, to generate a new React component with CSS styling and TypeScript code, you could run:
-
----
-
 # Example
 ![example-01](./examples/example-01.gif)
 
@@ -31,7 +25,9 @@ you can view `examples` folder for more real files examples.
 
 # How to use CRXO?
 
-You can install it locally or globally, or just use it with "npx crxo" command without any installations required.
+To use the tool, simply run the CLI command with the appropriate options. 
+
+For example, to generate a new React component with CSS styling and TypeScript code, you can install it locally or globally, or just use it with "npx crxo" command without any installations required.
 
 * Global installation: npm i -g crxo / yarn global add crxo
 * Local installation: npm i crxo --save-dev / yarn add crxo -D
