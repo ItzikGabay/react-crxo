@@ -9,14 +9,18 @@ export class FilesService {
     this.config = config;
   }
 
-  public createDirectory() {
+  public createDirectory(folderName: boolean | string) {
+    if(folderName) {
+        return fs.promises.mkdir(`${this.getPath}/${folderName}`);
+    }
     return fs.promises.mkdir(this.getPath);
   }
 
   public createExtensionFile(content: string = '') {
     console.log(`Generating ${this.file.extension}..`);
-    if(this.file.extension === 'folder') {
-        return this.createDirectory();
+    if(this.file.type === 'folder') {
+        const isSubFolder = this.file.type === 'folder' && this.file.extension !== 'folder';
+        return this.createDirectory(isSubFolder && this.file.extension);
     }
     return fs.promises.writeFile(this.getFullPath, content, 'utf8');
   }

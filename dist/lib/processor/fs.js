@@ -4,14 +4,18 @@ var FilesService = /** @class */ (function () {
         this.file = file;
         this.config = config;
     }
-    FilesService.prototype.createDirectory = function () {
+    FilesService.prototype.createDirectory = function (folderName) {
+        if (folderName) {
+            return fs.promises.mkdir("".concat(this.getPath, "/").concat(folderName));
+        }
         return fs.promises.mkdir(this.getPath);
     };
     FilesService.prototype.createExtensionFile = function (content) {
         if (content === void 0) { content = ''; }
         console.log("Generating ".concat(this.file.extension, ".."));
-        if (this.file.extension === 'folder') {
-            return this.createDirectory();
+        if (this.file.type === 'folder') {
+            var isSubFolder = this.file.type === 'folder' && this.file.extension !== 'folder';
+            return this.createDirectory(isSubFolder && this.file.extension);
         }
         return fs.promises.writeFile(this.getFullPath, content, 'utf8');
     };

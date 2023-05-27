@@ -16,7 +16,9 @@ export const processOutput = async (output: InquirerOutput) => {
 };
 
 const processFile = async (file: InquirerFileType, config: InquirerOutput) => {
+  // service for handling and creating the files
   const filesService = new FilesService(file, config);
+  // code to write in the file
   const templateByExtensionType = createTemplate(file, config);
 
   await filesService.createExtensionFile(templateByExtensionType);

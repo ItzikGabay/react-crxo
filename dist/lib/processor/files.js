@@ -82,6 +82,30 @@ export var getExtensionsConfig = function (_a) {
             hasComponentName: true,
             extension: 'types',
         },
+        _b[availableExtensions.common] = {
+            type: 'folder',
+            label: 'common (sub-folder)',
+            defaultEnabled: false,
+            endingWithEngineType: true,
+            hasComponentName: true,
+            extension: 'common',
+        },
+        _b[availableExtensions.helpers] = {
+            type: 'folder',
+            label: 'helpers (sub-folder)',
+            defaultEnabled: false,
+            endingWithEngineType: false,
+            hasComponentName: true,
+            extension: 'helpers',
+        },
+        _b[availableExtensions.components] = {
+            type: 'folder',
+            label: 'components (sub-folder)',
+            defaultEnabled: false,
+            endingWithEngineType: false,
+            hasComponentName: true,
+            extension: 'components',
+        },
         _b;
 };
 export var availableExtensions;
@@ -96,4 +120,7 @@ export var availableExtensions;
     availableExtensions["controller"] = "controller";
     availableExtensions["utils"] = "utils";
     availableExtensions["types"] = "types";
+    availableExtensions["common"] = "common";
+    availableExtensions["helpers"] = "helpers";
+    availableExtensions["components"] = "components";
 })(availableExtensions || (availableExtensions = {}));

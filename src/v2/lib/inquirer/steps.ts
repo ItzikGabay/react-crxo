@@ -3,7 +3,6 @@ import { fileSelectionStep } from './steps-lib/files-selection.js';
 import { componentNameStep } from './steps-lib/component-name.js';
 import { templateTypeStep } from './steps-lib/template-type.js';
 import { createLocationStep } from "./steps-lib/create-location.js";
-import {InquirerStepConfig, InquirerStepPartialConfig} from "./types";
 
 export const engineTypeStep = {
   STEP_1: JsEngineStep,

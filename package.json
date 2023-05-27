@@ -17,8 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^8.3.0",
-    "inquirer": "^8.2.0",
-    "inquirer-file-tree-selection-prompt": "^2.0.5"
+    "inquirer": "^9.2.6",
+    "inquirer-file-tree-selection-prompt": "2.0.5"
   },
   "repository": {
     "url": "https://github.com/ItzikGabay/react-create-component-cli.git"
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
     "eslint": "^8.16.0",
+    "eslint-config-next": "^13.4.3",
     "prettier": "^2.7.1",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.2"

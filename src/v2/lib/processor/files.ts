@@ -80,6 +80,30 @@ export const getExtensionsConfig = ({ engine }: any) => {
       hasComponentName: true,
       extension: 'types',
     },
+    [availableExtensions.common]: {
+      type: 'folder',
+      label: 'common (sub-folder)',
+      defaultEnabled: false,
+      endingWithEngineType: true,
+      hasComponentName: true,
+      extension: 'common',
+    },
+    [availableExtensions.helpers]: {
+      type: 'folder',
+      label: 'helpers (sub-folder)',
+      defaultEnabled: false,
+      endingWithEngineType: false,
+      hasComponentName: true,
+      extension: 'helpers',
+    },
+    [availableExtensions.components]: {
+      type: 'folder',
+      label: 'components (sub-folder)',
+      defaultEnabled: false,
+      endingWithEngineType: false,
+      hasComponentName: true,
+      extension: 'components',
+    }
   };
 };
 
@@ -94,4 +118,7 @@ export enum availableExtensions {
     controller = 'controller',
     utils = 'utils',
     types = 'types',
+    common = 'common',
+    helpers = 'helpers',
+    components = 'components',
 }
